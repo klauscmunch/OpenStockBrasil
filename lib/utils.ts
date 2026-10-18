@@ -13,11 +13,11 @@ export const formatTimeAgo = (timestamp: number) => {
 
     if (diffInHours > 24) {
         const days = Math.floor(diffInHours / 24);
-        return `${days} day${days > 1 ? 's' : ''} ago`;
+        return `há ${days} dia${days > 1 ? 's' : ''}`;
     } else if (diffInHours >= 1) {
-        return `${diffInHours} hour${diffInHours > 1 ? 's' : ''} ago`;
+        return `há ${diffInHours} hora${diffInHours > 1 ? 's' : ''}`;
     } else {
-        return `${diffInMinutes} minute${diffInMinutes > 1 ? 's' : ''} ago`;
+        return `há ${diffInMinutes} minuto${diffInMinutes > 1 ? 's' : ''}`;
     }
 };
 
@@ -89,7 +89,7 @@ export const formatArticle = (
     headline: article.headline!.trim(),
     summary:
         article.summary!.trim().substring(0, isCompanyNews ? 200 : 150) + '...',
-    source: article.source || (isCompanyNews ? 'Company News' : 'Market News'),
+    source: article.source || (isCompanyNews ? 'Notícias da empresa' : 'Notícias do mercado'),
     url: article.url!,
     datetime: article.datetime!,
     image: article.image || '',
@@ -109,7 +109,7 @@ export const getChangeColorClass = (changePercent?: number) => {
 };
 
 export const formatPrice = (price: number, currency = 'USD') => {
-    return new Intl.NumberFormat('en-US', {
+    return new Intl.NumberFormat('pt-BR', {
         style: 'currency',
         currency,
         minimumFractionDigits: 2,
@@ -129,14 +129,15 @@ export function formatNumber(num?: number | null): string {
     // If we assume typical market cap input IS millions:
     const value = num * 1000000;
 
-    if (value >= 1e12) return (value / 1e12).toFixed(2) + 'T';
-    if (value >= 1e9) return (value / 1e9).toFixed(2) + 'B';
-    if (value >= 1e6) return (value / 1e6).toFixed(2) + 'M';
-    if (value >= 1e3) return (value / 1e3).toFixed(2) + 'K';
+    const fixed = (n: number) => n.toFixed(2).replace('.', ',');
+    if (value >= 1e12) return fixed(value / 1e12) + ' tri';
+    if (value >= 1e9) return fixed(value / 1e9) + ' bi';
+    if (value >= 1e6) return fixed(value / 1e6) + ' mi';
+    if (value >= 1e3) return fixed(value / 1e3) + ' mil';
     return value.toString();
 }
 
-export const formatDateToday = new Date().toLocaleDateString('en-US', {
+export const formatDateToday = new Date().toLocaleDateString('pt-BR', {
     weekday: 'long',
     year: 'numeric',
     month: 'long',
@@ -147,10 +148,10 @@ export const formatDateToday = new Date().toLocaleDateString('en-US', {
 
 export const getAlertText = (alert: Alert) => {
     const condition = alert.alertType === 'upper' ? '>' : '<';
-    return `Price ${condition} ${formatPrice(alert.threshold)}`;
+    return `Preço ${condition} ${formatPrice(alert.threshold)}`;
 };
 
-export const getFormattedTodayDate = () => new Date().toLocaleDateString('en-US', {
+export const getFormattedTodayDate = () => new Date().toLocaleDateString('pt-BR', {
     weekday: 'long',
     year: 'numeric',
     month: 'long',

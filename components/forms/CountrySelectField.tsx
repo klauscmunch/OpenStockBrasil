@@ -26,10 +26,12 @@ const COUNTRY_LABEL_OVERRIDES: Record<string, string> = {
     TW: 'Taiwan',
 };
 
+// Country names in Portuguese, sorted the way a Brazilian reader expects
+const regionNames = new Intl.DisplayNames(['pt-BR'], { type: 'region' });
 const COUNTRY_OPTIONS = countryList().getData().map((country) => ({
     ...country,
-    label: COUNTRY_LABEL_OVERRIDES[country.value] ?? country.label,
-}));
+    label: COUNTRY_LABEL_OVERRIDES[country.value] ?? regionNames.of(country.value) ?? country.label,
+})).sort((a, b) => a.label.localeCompare(b.label, 'pt-BR'));
 
 type CountrySelectProps = {
     name: string;
@@ -72,7 +74,7 @@ const CountrySelect = ({
               <span>{COUNTRY_OPTIONS.find((c) => c.value === value)?.label}</span>
             </span>
                     ) : (
-                        'Select your country...'
+                        'Selecione seu país...'
                     )}
                     <ChevronsUpDown className='ml-2 h-4 w-4 shrink-0 opacity-50' />
                 </Button>
@@ -83,11 +85,11 @@ const CountrySelect = ({
             >
                 <Command className='bg-gray-800 border-gray-600'>
                     <CommandInput
-                        placeholder='Search countries...'
+                        placeholder='Buscar país...'
                         className='country-select-input'
                     />
                     <CommandEmpty className='country-select-empty'>
-                        No country found.
+                        Nenhum país encontrado.
                     </CommandEmpty>
                     <CommandList className='max-h-60 bg-gray-800 scrollbar-hide-default'>
                         <CommandGroup className='bg-gray-800'>
@@ -137,7 +139,7 @@ export const CountrySelectField = ({
                 name={name}
                 control={control}
                 rules={{
-                    required: required ? `Please select ${label.toLowerCase()}` : false,
+                    required: required ? `Selecione o ${label.toLowerCase()}` : false,
                 }}
                 render={({ field }) => (
                     <CountrySelect value={field.value} onChange={field.onChange} />
@@ -145,7 +147,7 @@ export const CountrySelectField = ({
             />
             {error && <p className='text-[13px] text-down'>{error.message}</p>}
             <p className='text-[12.5px] text-faint'>
-                Helps us show market data and news relevant to you.
+                Ajuda a mostrar dados de mercado e notícias relevantes para você.
             </p>
         </div>
     );

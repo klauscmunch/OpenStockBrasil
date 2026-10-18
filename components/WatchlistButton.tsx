@@ -35,19 +35,19 @@ const WatchlistButton = ({ symbol, company, isInWatchlist, variant = "button", o
                     return;
                 }
             } else await removeFromWatchlist(symbol);
-            toast.success(next ? `${symbol} added to watchlist` : `${symbol} removed from watchlist`);
+            toast.success(next ? `${symbol} adicionado à watchlist` : `${symbol} removido da watchlist`);
             onWatchlistChange?.(symbol, next);
             router.refresh(); // sidebar lists the watchlist from the layout
         } catch (error) {
             console.error("Watchlist action failed:", error);
             setAdded(!next);
-            toast.error("Couldn’t update your watchlist");
+            toast.error("Não foi possível atualizar sua watchlist");
         } finally {
             setLoading(false);
         }
     };
 
-    const label = added ? `Remove ${symbol} from watchlist` : `Add ${symbol} to watchlist`;
+    const label = added ? `Remover ${symbol} da watchlist` : `Adicionar ${symbol} à watchlist`;
 
     if (variant === "icon") {
         return (
@@ -60,7 +60,7 @@ const WatchlistButton = ({ symbol, company, isInWatchlist, variant = "button", o
     return (
         <button type="button" onClick={handleClick} disabled={loading} className={cn('btn btn-ghost', added && 'is-on')} aria-pressed={added}>
             <Star fill={added ? 'currentColor' : 'none'} />
-            {added ? 'Watching' : 'Watch'}
+            {added ? 'Acompanhando' : 'Acompanhar'}
         </button>
     );
 };

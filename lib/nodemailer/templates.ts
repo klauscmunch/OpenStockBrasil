@@ -1,11 +1,11 @@
 export const WELCOME_EMAIL_TEMPLATE = `<!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="format-detection" content="telephone=no">
     <meta name="x-apple-disable-message-reformatting">
-    <title>Welcome to OpenStock</title>
+    <title>Boas-vindas ao OpenStock</title>
     <!--[if mso]>
     <noscript>
         <xml>
@@ -97,14 +97,14 @@ export const WELCOME_EMAIL_TEMPLATE = `<!DOCTYPE html>
                     <!-- Header with Logo -->
                     <tr>
                         <td align="left" class="mobile-header-padding" style="padding: 40px 40px 20px 40px;">
-                            <img src="https://i.ibb.co/r28VWPjS/Screenshot-2025-10-04-123317-Picsart-Ai-Image-Enhancer-removebg-preview.png" alt="OpenStock Logo" width="150" style="max-width: 100%; height: auto;">
+                            <img src="https://i.ibb.co/r28VWPjS/Screenshot-2025-10-04-123317-Picsart-Ai-Image-Enhancer-removebg-preview.png" alt="Logo do OpenStock" width="150" style="max-width: 100%; height: auto;">
                         </td>
                     </tr>
 
                     <!-- Dashboard Preview Image -->
                     <tr>
                         <td align="center" class="dashboard-preview" style="padding: 40px 40px 0px 40px;">
-                            <img src="https://i.ibb.co/BKC2HBBQ/dashboard.png" alt="OpenStock Dashboard Preview" width="100%" style="max-width: 520px; width: 100%; height: auto; border-radius: 12px; border: 1px solid #30333A;">
+                            <img src="https://i.ibb.co/BKC2HBBQ/dashboard.png" alt="Prévia do painel do OpenStock" width="100%" style="max-width: 520px; width: 100%; height: auto; border-radius: 12px; border: 1px solid #30333A;">
                         </td>
                     </tr>
 
@@ -114,7 +114,7 @@ export const WELCOME_EMAIL_TEMPLATE = `<!DOCTYPE html>
 
                             <!-- Welcome Heading -->
                             <h1 class="mobile-title dark-text" style="margin: 0 0 30px 0; font-size: 24px; font-weight: 600; color: #FDD458; line-height: 1.2;">
-                                Welcome aboard {{name}}
+                                Boas-vindas, {{name}}
                             </h1>
 
                             <!-- Intro Text -->
@@ -122,19 +122,19 @@ export const WELCOME_EMAIL_TEMPLATE = `<!DOCTYPE html>
 
                             <!-- Feature List Label -->
                             <p class="mobile-text dark-text-secondary" style="margin: 0 0 15px 0; font-size: 16px; line-height: 1.6; color: #CCDADC; font-weight: 600;">
-                                Here's what you can do right now:
+                                Veja o que você já pode fazer:
                             </p>
 
                             <!-- Feature List -->
                             <ul class="mobile-text dark-text-secondary" style="margin: 0 0 30px 0; padding-left: 20px; font-size: 16px; line-height: 1.6; color: #CCDADC;">
-                                <li style="margin-bottom: 12px;">Set up your watchlist to follow your favorite stocks</li>
-                                <li style="margin-bottom: 12px;">Search any stock with ⌘K and open it as a tab</li>
-                                <li style="margin-bottom: 12px;">Explore the dashboard for trends and the latest market news</li>
+                                <li style="margin-bottom: 12px;">Monte sua watchlist para acompanhar suas ações favoritas</li>
+                                <li style="margin-bottom: 12px;">Busque qualquer ação com ⌘K e abra numa aba</li>
+                                <li style="margin-bottom: 12px;">Explore o painel para ver tendências e as últimas notícias do mercado</li>
                             </ul>
 
                             <!-- Additional Text -->
                             <p class="mobile-text dark-text-secondary" style="margin: 0 0 40px 0; font-size: 16px; line-height: 1.6; color: #CCDADC;">
-                                We'll keep you informed with timely updates, insights, and alerts — so you can focus on making the right calls.
+                                Vamos manter você informado com atualizações, análises e alertas no momento certo — para você focar nas melhores decisões.
                             </p>
 
                             <!-- CTA Button -->
@@ -142,7 +142,7 @@ export const WELCOME_EMAIL_TEMPLATE = `<!DOCTYPE html>
                                 <tr>
                                     <td align="center">
                                         <a href="https://openstock-ods.vercel.app/" style="display: block; width: 100%; background: linear-gradient(135deg, #FDD458 0%, #E8BA40 100%); color: #000000; text-decoration: none; padding: 16px 32px; border-radius: 8px; font-size: 16px; font-weight: 500; line-height: 1; text-align: center; box-sizing: border-box;">
-                                            Go to Dashboard
+                                            Ir para o painel
                                         </a>
                                     </td>
                                 </tr>
@@ -150,9 +150,9 @@ export const WELCOME_EMAIL_TEMPLATE = `<!DOCTYPE html>
 
                             <!-- Footer Text -->
                             <p class="mobile-text dark-text-muted" style="margin: 40px 0 0 0; font-size: 14px; line-height: 1.5; color: #CCDADC !important; text-align: center;">
-                               Initiative by Open Dev Society<br>
-                                <a href="#" style="color: #CCDADC !important; text-decoration: underline;">Unsubscribe</a> |
-                                <a href="https://stock-market-dev.vercel.app/" style="color: #CCDADC !important; text-decoration: underline;">Visit OpenStock</a><br>
+                               Uma iniciativa da Open Dev Society<br>
+                                <a href="#" style="color: #CCDADC !important; text-decoration: underline;">Cancelar inscrição</a> |
+                                <a href="https://stock-market-dev.vercel.app/" style="color: #CCDADC !important; text-decoration: underline;">Visitar o OpenStock</a><br>
                                 © 2025 Open Dev Society
                             </p>
                         </td>
@@ -166,13 +166,13 @@ export const WELCOME_EMAIL_TEMPLATE = `<!DOCTYPE html>
 </html>`;
 
 export const NEWS_SUMMARY_EMAIL_TEMPLATE = `<!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="format-detection" content="telephone=no">
     <meta name="x-apple-disable-message-reformatting">
-    <title>Market News Summary Today</title>
+    <title>Resumo das notícias do mercado de hoje</title>
     <!--[if mso]>
     <noscript>
         <xml>
@@ -260,7 +260,7 @@ export const NEWS_SUMMARY_EMAIL_TEMPLATE = `<!DOCTYPE html>
                     <!-- Header with Logo -->
                     <tr>
                         <td align="left" class="mobile-header-padding" style="padding: 40px 40px 20px 40px;">
-                            <img src="https://i.ibb.co/r28VWPjS/Screenshot-2025-10-04-123317-Picsart-Ai-Image-Enhancer-removebg-preview.png" alt="Openstock Logo" width="150" style="max-width: 100%; height: auto;">
+                            <img src="https://i.ibb.co/r28VWPjS/Screenshot-2025-10-04-123317-Picsart-Ai-Image-Enhancer-removebg-preview.png" alt="Logo do OpenStock" width="150" style="max-width: 100%; height: auto;">
                         </td>
                     </tr>
 
@@ -270,7 +270,7 @@ export const NEWS_SUMMARY_EMAIL_TEMPLATE = `<!DOCTYPE html>
 
                             <!-- Header -->
                             <h1 class="mobile-title dark-text" style="margin: 0 0 20px 0; font-size: 24px; font-weight: 600; color: #FDD458; line-height: 1.2;">
-                                Market News Summary Today
+                                Resumo das notícias do mercado de hoje
                             </h1>
 
                             <!-- Date -->
@@ -284,11 +284,11 @@ export const NEWS_SUMMARY_EMAIL_TEMPLATE = `<!DOCTYPE html>
                             <!-- Footer Text -->
                             <div style="text-align: center; margin: 40px 0 0 0;">
                                 <p style="margin: 0 0 10px 0; font-size: 14px; line-height: 1.5; color: #CCDADC !important;">
-                                    You're receiving this because you subscribed to Openstock news updates.
+                                    Você está recebendo isto porque assinou as atualizações de notícias do OpenStock.
                                 </p>
                                 <p style="margin: 0 0 10px 0; font-size: 14px; line-height: 1.5; color: #CCDADC !important;">
-                                    <a href="#" style="color: #CCDADC !important; text-decoration: underline;">Unsubscribe</a> |
-                                    <a href="https://openstock.vercel.app" style="color: #CCDADC !important; text-decoration: underline;">Visit Openstock</a>
+                                    <a href="#" style="color: #CCDADC !important; text-decoration: underline;">Cancelar inscrição</a> |
+                                    <a href="https://openstock.vercel.app" style="color: #CCDADC !important; text-decoration: underline;">Visitar o OpenStock</a>
                                 </p>
                                 <p style="margin: 0; font-size: 14px; line-height: 1.5; color: #CCDADC !important;">
                                     © 2025 Open Dev Society
@@ -305,13 +305,13 @@ export const NEWS_SUMMARY_EMAIL_TEMPLATE = `<!DOCTYPE html>
 </html>`;
 
 export const STOCK_ALERT_UPPER_EMAIL_TEMPLATE = `<!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="format-detection" content="telephone=no">
     <meta name="x-apple-disable-message-reformatting">
-    <title>Price Alert: {{symbol}} Hit Upper Target</title>
+    <title>Alerta de preço: {{symbol}} atingiu o alvo superior</title>
     <!--[if mso]>
     <noscript>
         <xml>
@@ -410,7 +410,7 @@ export const STOCK_ALERT_UPPER_EMAIL_TEMPLATE = `<!DOCTYPE html>
                     <!-- Header with Logo -->
                     <tr>
                         <td align="left" class="mobile-header-padding" style="padding: 40px 40px 20px 40px;">
-                            <img src="https://i.ibb.co/r28VWPjS/Screenshot-2025-10-04-123317-Picsart-Ai-Image-Enhancer-removebg-preview.png" alt="Openstock Logo" width="150" style="max-width: 100%; height: auto;">
+                            <img src="https://i.ibb.co/r28VWPjS/Screenshot-2025-10-04-123317-Picsart-Ai-Image-Enhancer-removebg-preview.png" alt="Logo do OpenStock" width="150" style="max-width: 100%; height: auto;">
                         </td>
                     </tr>
 
@@ -421,7 +421,7 @@ export const STOCK_ALERT_UPPER_EMAIL_TEMPLATE = `<!DOCTYPE html>
                                 <tr>
                                     <td align="center">
                                         <h1 class="mobile-title" style="margin: 0 0 10px 0; font-size: 24px; font-weight: 700; color: #ffffff; line-height: 1.2;">
-                                            📈 Price Above Reached
+                                            📈 Preço acima do alvo
                                         </h1>
                                         <p style="margin: 0; font-size: 16px; color: #ffffff; opacity: 0.9;">
                                             {{timestamp}}
@@ -448,7 +448,7 @@ export const STOCK_ALERT_UPPER_EMAIL_TEMPLATE = `<!DOCTYPE html>
                                 <!-- Current Price -->
                                 <div style="margin-bottom: 20px;">
                                     <p class="dark-text-muted" style="margin: 0 0 5px 0; font-size: 14px; color: #6b7280; text-transform: uppercase; letter-spacing: 0.5px;">
-                                        Current Price
+                                        Preço atual
                                     </p>
                                     <p class="mobile-price" style="margin: 0; font-size: 36px; font-weight: 700; color: #10b981;">
                                         {{currentPrice}}
@@ -459,23 +459,23 @@ export const STOCK_ALERT_UPPER_EMAIL_TEMPLATE = `<!DOCTYPE html>
                             <!-- Alert Details -->
                             <div class="dark-info-box" style="background-color: #212328; border-radius: 8px; padding: 20px; margin-bottom: 30px;">
                                 <h3 class="dark-text" style="margin: 0 0 15px 0; font-size: 18px; font-weight: 600; color: #ffffff;">
-                                    Alert Details
+                                    Detalhes do alerta
                                 </h3>
                                 <p class="mobile-text dark-text-secondary" style="margin: 0 0 10px 0; font-size: 16px; line-height: 1.5; color: #9ca3af;">
-                                    <strong>Target Price:</strong> {{targetPrice}}
+                                    <strong>Preço-alvo:</strong> {{targetPrice}}
                                 </p>
                                 <p class="mobile-text dark-text-secondary" style="margin: 0 0 10px 0; font-size: 16px; line-height: 1.5; color: #9ca3af;">
-                                    <strong>Trigger:</strong> Price exceeded your upper threshold of {{targetPrice}}
+                                    <strong>Gatilho:</strong> O preço passou do seu limite superior de {{targetPrice}}
                                 </p>
                             </div>
 
                             <!-- Success Message -->
                             <div style="background-color: #050505; border: 1px solid #374151; border-radius: 8px; padding: 20px; margin-bottom: 30px;">
                                 <h3 style="margin: 0 0 8px 0; font-size: 18px; font-weight: 600; color: #E8BA40;">
-                                    Opportunity Alert!
+                                    Alerta de oportunidade!
                                 </h3>
                                 <p class="mobile-text" style="margin: 0; font-size: 14px; line-height: 1.5; color: #ccdadc;">
-                                    {{symbol}} has reached your target price! This could be a good time to review your position and consider taking profits or adjusting your strategy.
+                                    {{symbol}} atingiu seu preço-alvo! Pode ser uma boa hora para revisar sua posição e pensar em realizar lucros ou ajustar sua estratégia.
                                 </p>
                             </div>
 
@@ -484,7 +484,7 @@ export const STOCK_ALERT_UPPER_EMAIL_TEMPLATE = `<!DOCTYPE html>
                                 <tr>
                                     <td align="center">
                                         <a href="https://openstock-ods.vercel.app/" style="display: block; width: 100%; max-width: 100%; box-sizing: border-box; color: #000000; background-color: #E8BA40; text-decoration: none; padding: 16px 32px; border-radius: 8px; font-size: 16px; font-weight: 500; line-height: 1; text-align: center;">
-                                            View Dashboard
+                                            Ver painel
                                         </a>
                                     </td>
                                 </tr>
@@ -493,11 +493,11 @@ export const STOCK_ALERT_UPPER_EMAIL_TEMPLATE = `<!DOCTYPE html>
                              <!-- Footer Text -->
                             <div style="text-align: center; margin: 40px 0 0 0;">
                                 <p style="margin: 0 0 10px 0; font-size: 14px; line-height: 1.5; color: #CCDADC !important;">
-                                    You're receiving this because you subscribed to Openstock news updates.
+                                    Você está recebendo isto porque assinou as atualizações de notícias do OpenStock.
                                 </p>
                                 <p style="margin: 0 0 10px 0; font-size: 14px; line-height: 1.5; color: #CCDADC !important;">
-                                    <a href="#" style="color: #CCDADC !important; text-decoration: underline;">Unsubscribe</a> |
-                                    <a href="https://openstock-ods.vercel.app/" style="color: #CCDADC !important; text-decoration: underline;">Visit Openstock</a>
+                                    <a href="#" style="color: #CCDADC !important; text-decoration: underline;">Cancelar inscrição</a> |
+                                    <a href="https://openstock-ods.vercel.app/" style="color: #CCDADC !important; text-decoration: underline;">Visitar o OpenStock</a>
                                 </p>
                                 <p style="margin: 0; font-size: 14px; line-height: 1.5; color: #CCDADC !important;">
                                     © 2025 Open Dev Society
@@ -513,13 +513,13 @@ export const STOCK_ALERT_UPPER_EMAIL_TEMPLATE = `<!DOCTYPE html>
 </html>`;
 
 export const STOCK_ALERT_LOWER_EMAIL_TEMPLATE = `<!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="format-detection" content="telephone=no">
     <meta name="x-apple-disable-message-reformatting">
-    <title>Price Alert: {{symbol}} Hit Lower Target</title>
+    <title>Alerta de preço: {{symbol}} atingiu o alvo inferior</title>
     <!--[if mso]>
     <noscript>
         <xml>
@@ -618,7 +618,7 @@ export const STOCK_ALERT_LOWER_EMAIL_TEMPLATE = `<!DOCTYPE html>
                     <!-- Header with Logo -->
                     <tr>
                         <td align="left" class="mobile-header-padding" style="padding: 40px 40px 20px 40px;">
-                            <img src="https://i.ibb.co/r28VWPjS/Screenshot-2025-10-04-123317-Picsart-Ai-Image-Enhancer-removebg-preview.png" alt="Openstock Logo" width="150" style="max-width: 100%; height: auto;">
+                            <img src="https://i.ibb.co/r28VWPjS/Screenshot-2025-10-04-123317-Picsart-Ai-Image-Enhancer-removebg-preview.png" alt="Logo do OpenStock" width="150" style="max-width: 100%; height: auto;">
                         </td>
                     </tr>
 
@@ -629,7 +629,7 @@ export const STOCK_ALERT_LOWER_EMAIL_TEMPLATE = `<!DOCTYPE html>
                                 <tr>
                                     <td align="center">
                                         <h1 class="mobile-title" style="margin: 0 0 10px 0; font-size: 24px; font-weight: 700; color: #ffffff; line-height: 1.2;">
-                                            📉 Price Below Hit
+                                            📉 Preço abaixo do alvo
                                         </h1>
                                         <p style="margin: 0; font-size: 16px; color: #ffffff; opacity: 0.9;">
                                             {{timestamp}}
@@ -656,7 +656,7 @@ export const STOCK_ALERT_LOWER_EMAIL_TEMPLATE = `<!DOCTYPE html>
                                 <!-- Current Price -->
                                 <div style="margin-bottom: 20px;">
                                     <p class="dark-text-muted" style="margin: 0 0 5px 0; font-size: 14px; color: #6b7280; text-transform: uppercase; letter-spacing: 0.5px;">
-                                        Current Price
+                                        Preço atual
                                     </p>
                                     <p class="mobile-price" style="margin: 0; font-size: 36px; font-weight: 700; color: #ef4444;">
                                         {{currentPrice}}
@@ -667,23 +667,23 @@ export const STOCK_ALERT_LOWER_EMAIL_TEMPLATE = `<!DOCTYPE html>
                             <!-- Alert Details -->
                             <div class="dark-info-box" style="background-color: #212328; border-radius: 8px; padding: 20px; margin-bottom: 30px;">
                                 <h3 class="dark-text" style="margin: 0 0 15px 0; font-size: 18px; font-weight: 600; color: #ffffff;">
-                                    Alert Details
+                                    Detalhes do alerta
                                 </h3>
                                 <p class="mobile-text dark-text-secondary" style="margin: 0 0 10px 0; font-size: 16px; line-height: 1.5; color: #9ca3af;">
-                                    <strong>Target Price:</strong> {{targetPrice}}
+                                    <strong>Preço-alvo:</strong> {{targetPrice}}
                                 </p>
                                 <p class="mobile-text dark-text-secondary" style="margin: 0 0 10px 0; font-size: 16px; line-height: 1.5; color: #9ca3af;">
-                                    <strong>Trigger:</strong> Price dropped below your lower threshold of {{targetPrice}}
+                                    <strong>Gatilho:</strong> O preço caiu abaixo do seu limite inferior de {{targetPrice}}
                                 </p>
                             </div>
 
                             <!-- Opportunity Message -->
                             <div style="background-color: #050505; border: 1px solid #374151; border-radius: 8px; padding: 20px; margin-bottom: 30px;">
                                 <h3 style="margin: 0 0 8px 0; font-size: 18px; font-weight: 600; color: #E8BA40;">
-                                    Price Dropped
+                                    O preço caiu
                                 </h3>
                                 <p class="mobile-text" style="margin: 0; font-size: 14px; line-height: 1.5; color: #ccdadc;">
-                                    {{symbol}} dropped below your target price. This might be a good time to buy.
+                                    {{symbol}} caiu abaixo do seu preço-alvo. Pode ser uma boa hora para comprar.
                                 </p>
                             </div>
 
@@ -692,7 +692,7 @@ export const STOCK_ALERT_LOWER_EMAIL_TEMPLATE = `<!DOCTYPE html>
                                 <tr>
                                     <td align="center">
                                         <a href="https://openstock-ods.vercel.app/" style="display: block; width: 100%; max-width: 100%; box-sizing: border-box; background-color: #E8BA40; color: #000000; text-decoration: none; padding: 16px 32px; border-radius: 8px; font-size: 16px; font-weight: 500; line-height: 1; text-align: center;">
-                                            View Dashboard
+                                            Ver painel
                                         </a>
                                     </td>
                                 </tr>
@@ -701,11 +701,11 @@ export const STOCK_ALERT_LOWER_EMAIL_TEMPLATE = `<!DOCTYPE html>
                              <!-- Footer Text -->
                             <div style="text-align: center; margin: 40px 0 0 0;">
                                 <p style="margin: 0 0 10px 0; font-size: 14px; line-height: 1.5; color: #CCDADC !important;">
-                                    You're receiving this because you subscribed to Openstock news updates.
+                                    Você está recebendo isto porque assinou as atualizações de notícias do OpenStock.
                                 </p>
                                 <p style="margin: 0 0 10px 0; font-size: 14px; line-height: 1.5; color: #CCDADC !important;">
-                                    <a href="#" style="color: #CCDADC !important; text-decoration: underline;">Unsubscribe</a> |
-                                    <a href="https://openstock-ods.vercel.app/" style="color: #CCDADC !important; text-decoration: underline;">Visit Openstock</a>
+                                    <a href="#" style="color: #CCDADC !important; text-decoration: underline;">Cancelar inscrição</a> |
+                                    <a href="https://openstock-ods.vercel.app/" style="color: #CCDADC !important; text-decoration: underline;">Visitar o OpenStock</a>
                                 </p>
                                 <p style="margin: 0; font-size: 14px; line-height: 1.5; color: #CCDADC !important;">
                                     © 2025 Open Dev Society
@@ -722,13 +722,13 @@ export const STOCK_ALERT_LOWER_EMAIL_TEMPLATE = `<!DOCTYPE html>
 </html>`;
 
 export const VOLUME_ALERT_EMAIL_TEMPLATE = `<!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="format-detection" content="telephone=no">
     <meta name="x-apple-disable-message-reformatting">
-    <title>Volume Alert: {{symbol}}</title>
+    <title>Alerta de volume: {{symbol}}</title>
     <!--[if mso]>
     <noscript>
         <xml>
@@ -818,7 +818,7 @@ export const VOLUME_ALERT_EMAIL_TEMPLATE = `<!DOCTYPE html>
                     <!-- Header with Logo -->
                     <tr>
                         <td align="left" class="mobile-header-padding" style="padding: 40px 40px 20px 40px;">
-                            <img src="https://i.ibb.co/r28VWPjS/Screenshot-2025-10-04-123317-Picsart-Ai-Image-Enhancer-removebg-preview.png" alt="Openstock Logo" width="150" style="max-width: 100%; height: auto;">
+                            <img src="https://i.ibb.co/r28VWPjS/Screenshot-2025-10-04-123317-Picsart-Ai-Image-Enhancer-removebg-preview.png" alt="Logo do OpenStock" width="150" style="max-width: 100%; height: auto;">
                         </td>
                     </tr>
 
@@ -829,7 +829,7 @@ export const VOLUME_ALERT_EMAIL_TEMPLATE = `<!DOCTYPE html>
                                 <tr>
                                     <td align="center">
                                         <h1 class="mobile-title" style="margin: 0 0 10px 0; font-size: 24px; font-weight: 700; color: #ffffff; line-height: 1.2;">
-                                            📊 Volume Alert
+                                            📊 Alerta de volume
                                         </h1>
                                         <p style="margin: 0; font-size: 16px; color: #ffffff; opacity: 0.9;">
                                             {{timestamp}}
@@ -856,7 +856,7 @@ export const VOLUME_ALERT_EMAIL_TEMPLATE = `<!DOCTYPE html>
                                 <!-- Current Volume -->
                                 <div style="margin-bottom: 20px;">
                                     <p class="dark-text-muted" style="margin: 0 0 5px 0; font-size: 14px; color: #6b7280; text-transform: uppercase; letter-spacing: 0.5px;">
-                                        Current Volume
+                                        Volume atual
                                     </p>
                                     <p class="mobile-volume" style="margin: 0; font-size: 36px; font-weight: 700; color: #7c3aed;">
                                         {{currentVolume}}M
@@ -866,7 +866,7 @@ export const VOLUME_ALERT_EMAIL_TEMPLATE = `<!DOCTYPE html>
                                 <!-- Current Price (smaller) -->
                                 <div class="dark-border" style="margin-top: 20px; padding-top: 20px; border-top: 1px solid #30333A;">
                                     <p class="dark-text-secondary" style="margin: 0 0 5px 0; font-size: 12px; color: #9ca3af; text-transform: uppercase; letter-spacing: 0.5px;">
-                                        Current Price
+                                        Preço atual
                                     </p>
                                     <p style="margin: 0; font-size: 18px; font-weight: 600; color: {{priceColor}};">
                                         {{currentPrice}} ({{changeDirection}}{{changePercent}}%)
@@ -877,26 +877,26 @@ export const VOLUME_ALERT_EMAIL_TEMPLATE = `<!DOCTYPE html>
                             <!-- Alert Details -->
                             <div class="dark-info-box" style="background-color: #1f2937; border: 1px solid #374151; border-radius: 8px; padding: 20px; margin-bottom: 30px;">
                                 <h3 class="dark-text" style="margin: 0 0 15px 0; font-size: 18px; font-weight: 600; color: #ffffff;">
-                                    Volume Spike Details
+                                    Detalhes do pico de volume
                                 </h3>
                                 <p class="mobile-text dark-text-secondary" style="margin: 0 0 10px 0; font-size: 16px; line-height: 1.5; color: #9ca3af;">
-                                    <strong>Trigger:</strong> {{alertMessage}}
+                                    <strong>Gatilho:</strong> {{alertMessage}}
                                 </p>
                                 <p class="mobile-text dark-text-secondary" style="margin: 0 0 10px 0; font-size: 16px; line-height: 1.5; color: #9ca3af;">
-                                    <strong>Average Volume:</strong> {{averageVolume}}M shares
+                                    <strong>Volume médio:</strong> {{averageVolume}} mi de ações
                                 </p>
                                 <p class="mobile-text dark-text-secondary" style="margin: 0; font-size: 16px; line-height: 1.5; color: #9ca3af;">
-                                    <strong>Spike Detected:</strong> {{volumeSpike}} above normal trading activity
+                                    <strong>Pico detectado:</strong> {{volumeSpike}} acima da negociação normal
                                 </p>
                             </div>
 
                             <!-- What This Means -->
                             <div class="dark-info-box" style="background-color: #1f2937; border: 1px solid #374151; border-radius: 8px; padding: 20px; margin-bottom: 30px;">
                                 <h3 class="dark-text" style="margin: 0 0 15px 0; font-size: 18px; font-weight: 600; color: #ffffff;">
-                                    💡 What This Means
+                                    💡 O que isso significa
                                 </h3>
                                 <p class="mobile-text dark-text-secondary" style="margin: 0; font-size: 16px; line-height: 1.5; color: #9ca3af;">
-                                    High volume often indicates increased investor interest, potential news events, or significant price movements. This could signal an opportunity to investigate what's driving the activity.
+                                    Volume alto costuma indicar mais interesse dos investidores, possíveis notícias ou movimentos fortes de preço. Pode ser um sinal para investigar o que está movimentando o papel.
                                 </p>
                             </div>
 
@@ -905,7 +905,7 @@ export const VOLUME_ALERT_EMAIL_TEMPLATE = `<!DOCTYPE html>
                                 <tr>
                                     <td align="center">
                                         <a href="https://openstock-ods.vercel.app" style="display: inline-block; background-color: #E8BA40; color: #ffffff; text-decoration: none; padding: 14px 28px; border-radius: 8px; font-size: 16px; font-weight: 500; line-height: 1;">
-                                            View Dashboard
+                                            Ver painel
                                         </a>
                                     </td>
                                 </tr>
@@ -914,18 +914,18 @@ export const VOLUME_ALERT_EMAIL_TEMPLATE = `<!DOCTYPE html>
                             <!-- Disclaimer -->
                             <div class="dark-info-box" style="background-color: #1f2937; border-radius: 6px; padding: 15px; margin-bottom: 20px; border: 1px solid #374151;">
                                 <p class="dark-text-muted" style="margin: 0; font-size: 13px; line-height: 1.4; color: #6b7280; text-align: center;">
-                                    <strong>Disclaimer:</strong> This alert is for informational purposes only and should not be considered investment advice. High volume doesn't guarantee price direction. Always do your own research before making investment decisions.
+                                    <strong>Aviso:</strong> Este alerta é apenas informativo e não deve ser considerado recomendação de investimento. Volume alto não garante a direção do preço. Faça sempre sua própria análise antes de investir.
                                 </p>
                             </div>
 
                              <!-- Footer Text -->
                             <div style="text-align: center; margin: 40px 0 0 0;">
                                 <p style="margin: 0 0 10px 0; font-size: 14px; line-height: 1.5; color: #CCDADC !important;">
-                                    You're receiving this because you subscribed to Openstock news updates.
+                                    Você está recebendo isto porque assinou as atualizações de notícias do OpenStock.
                                 </p>
                                 <p style="margin: 0 0 10px 0; font-size: 14px; line-height: 1.5; color: #CCDADC !important;">
-                                    <a href="#" style="color: #CCDADC !important; text-decoration: underline;">Unsubscribe</a> |
-                                    <a href="https://openstock-ods.vercel.app" style="color: #CCDADC !important; text-decoration: underline;">Visit Openstock</a>
+                                    <a href="#" style="color: #CCDADC !important; text-decoration: underline;">Cancelar inscrição</a> |
+                                    <a href="https://openstock-ods.vercel.app" style="color: #CCDADC !important; text-decoration: underline;">Visitar o OpenStock</a>
                                 </p>
                                 <p style="margin: 0; font-size: 14px; line-height: 1.5; color: #CCDADC !important;">
                                     © 2025 Open Dev Society
@@ -942,13 +942,13 @@ export const VOLUME_ALERT_EMAIL_TEMPLATE = `<!DOCTYPE html>
 </html>`;
 
 export const INACTIVE_USER_REMINDER_EMAIL_TEMPLATE = `<!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="format-detection" content="telephone=no">
     <meta name="x-apple-disable-message-reformatting">
-    <title>We Miss You! Your Market Insights Await</title>
+    <title>Sentimos sua falta! Suas análises de mercado esperam por você</title>
     <!--[if mso]>
     <noscript>
         <xml>
@@ -1041,7 +1041,7 @@ export const INACTIVE_USER_REMINDER_EMAIL_TEMPLATE = `<!DOCTYPE html>
                     <!-- Header with Logo -->
                     <tr>
                         <td align="left" class="mobile-header-padding" style="padding: 40px 40px 20px 40px;">
-                            <img src="https://i.ibb.co/r28VWPjS/Screenshot-2025-10-04-123317-Picsart-Ai-Image-Enhancer-removebg-preview.png" alt="Openstock Logo" width="150" style="max-width: 100%; height: auto;">
+                            <img src="https://i.ibb.co/r28VWPjS/Screenshot-2025-10-04-123317-Picsart-Ai-Image-Enhancer-removebg-preview.png" alt="Logo do OpenStock" width="150" style="max-width: 100%; height: auto;">
                         </td>
                     </tr>
 
@@ -1051,27 +1051,27 @@ export const INACTIVE_USER_REMINDER_EMAIL_TEMPLATE = `<!DOCTYPE html>
 
                             <!-- Welcome Back Heading -->
                             <h1 class="mobile-title dark-text" style="margin: 0 0 15px 0; font-size: 28px; font-weight: 600; background: linear-gradient(135deg, #FDD458 0%, #E8BA40 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; color: #FDD458; line-height: 1.2;">
-                                We Miss You, {{name}}!
+                                Sentimos sua falta, {{name}}!
                             </h1>
 
                             <!-- Main Message -->
                             <p class="mobile-text dark-text-secondary" style="margin: 0 0 30px 0; font-size: 16px; line-height: 1.6; color: #CCDADC;">
-                                We noticed you haven't visited Openstock in a while. The markets have been moving, and there might be some opportunities you don't want to miss!
+                                Notamos que você não visita o OpenStock há algum tempo. O mercado tem se mexido, e pode haver oportunidades que você não vai querer perder!
                             </p>
 
                             <!-- Additional Motivation -->
                             <div class="dark-info-box" style="background-color: #050505; border: 1px solid #374151; border-radius: 8px; padding: 20px; margin-bottom: 30px;">
                                 <h3 style="margin: 0 0 8px 0; font-size: 18px; font-weight: 600; color: #E8BA40;">
-                                    Market Update
+                                    Atualização do mercado
                                 </h3>
                                 <p class="mobile-text" style="margin: 0; font-size: 14px; line-height: 1.5; color: #ccdadc;">
-                                    Markets have been active lately! Major indices have seen significant movements, and there might be opportunities in your tracked stocks that you don't want to miss.
+                                    O mercado tem estado agitado! Os principais índices tiveram movimentos fortes, e pode haver oportunidades nas ações que você acompanha.
                                 </p>
                             </div>
 
                             <!-- Encouragement Message -->
                             <p class="mobile-text dark-text-secondary" style="margin: 0 0 40px 0; font-size: 16px; line-height: 1.6; color: #CCDADC;">
-                                Your watchlists are still active and ready to help you stay on top of your investments. Don't let market opportunities pass you by!
+                                Suas watchlists continuam ativas e prontas para ajudar você a acompanhar seus investimentos. Não deixe as oportunidades passarem!
                             </p>
 
                             <!-- CTA Button -->
@@ -1079,7 +1079,7 @@ export const INACTIVE_USER_REMINDER_EMAIL_TEMPLATE = `<!DOCTYPE html>
                                 <tr>
                                     <td align="center" class="mobile-button">
                                         <a href="https://openstock-ods.vercel.app" style="display: inline-block; background: #E8BA40; color: #000000; text-decoration: none; padding: 16px 32px; border-radius: 8px; font-size: 16px; font-weight: 500; line-height: 1; text-align: center;  width: 100%;">
-                                            Return to Dashboard
+                                            Voltar ao painel
                                         </a>
                                     </td>
                                 </tr>
@@ -1088,14 +1088,14 @@ export const INACTIVE_USER_REMINDER_EMAIL_TEMPLATE = `<!DOCTYPE html>
                             <!-- Footer Text -->
                             <div style="text-align: center; margin: 40px 0 0 0;">
                                 <p style="margin: 0 0 10px 0; font-size: 14px; line-height: 1.5; color: #CCDADC !important;">
-                                    Questions? Reply to this email or contact our support team.
+                                    Dúvidas? Responda este e-mail ou fale com nosso suporte.
                                 </p>
                                 <p style="margin: 0 0 10px 0; font-size: 14px; line-height: 1.5; color: #CCDADC !important;">
-                                    <a href="#" style="color: #CCDADC !important; text-decoration: underline;">Unsubscribe</a> |
-                                    <a href="https://openstock-ods.vercel.app" style="color: #CCDADC !important; text-decoration: underline;">Visit Openstock</a>
+                                    <a href="#" style="color: #CCDADC !important; text-decoration: underline;">Cancelar inscrição</a> |
+                                    <a href="https://openstock-ods.vercel.app" style="color: #CCDADC !important; text-decoration: underline;">Visitar o OpenStock</a>
                                 </p>
                                 <p style="margin: 0; font-size: 14px; line-height: 1.5; color: #CCDADC !important;">
-                                    © 2025 Openstock
+                                    © 2025 OpenStock
                                 </p>
                             </div>
                         </td>

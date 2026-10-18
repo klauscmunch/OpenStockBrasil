@@ -11,47 +11,47 @@ import { sidebarSponsors } from "@/lib/sponsors";
 import { DISCORD_URL, GOOD_FIRST_ISSUES_URL, REPO_URL } from "@/lib/constants";
 
 const FEATURES = [
-    { icon: CandlestickChart, title: 'Charts that move', body: 'TradingView candles, technicals and financials for any listed company, full screen when you need room.' },
-    { icon: Bell, title: 'Alerts by email', body: 'With OpenStock Cloud, set a target above or below the price. We check every five minutes and write when it crosses.' },
-    { icon: MessagesSquare, title: 'Sentiment in one read', body: 'Buzz and bullishness from Reddit, X.com, news and Polymarket, side by side for each stock.' },
-    { icon: Grid3x3, title: 'The whole market', body: 'Sector heatmap, movers and top stories on one screen before the bell.' },
-    { icon: Command, title: 'Find anything with ⌘K', body: 'Search every exchange Finnhub covers and open a stock as a tab, like a browser.' },
-    { icon: MailOpen, title: 'A Monday digest', body: 'A short, AI-written summary of the week’s news for the stocks you watch.' },
+    { icon: CandlestickChart, title: 'Gráficos ao vivo', body: 'Candles, análise técnica e dados financeiros do TradingView para qualquer empresa listada, em tela cheia quando precisar de espaço.' },
+    { icon: Bell, title: 'Alertas por e-mail', body: 'Com o OpenStock Cloud, defina um alvo acima ou abaixo do preço. Verificamos a cada cinco minutos e avisamos quando ele for cruzado.' },
+    { icon: MessagesSquare, title: 'Sentimento num relance', body: 'Buzz e otimismo do Reddit, X.com, notícias e Polymarket, lado a lado para cada ação.' },
+    { icon: Grid3x3, title: 'O mercado inteiro', body: 'Mapa de calor por setor, maiores altas e baixas e principais notícias numa só tela, antes da abertura.' },
+    { icon: Command, title: 'Encontre tudo com ⌘K', body: 'Busque ações da B3 e de todas as bolsas que o Finnhub cobre, e abra cada ação numa aba, como no navegador.' },
+    { icon: MailOpen, title: 'Resumo de segunda-feira', body: 'Um resumo curto, escrito por IA, das notícias da semana sobre as ações que você acompanha.' },
 ];
 
 const TIERS = [
     {
-        name: 'Community', price: 'Free', cadence: 'Hourly', perHour: 1,
-        body: 'This site. Quotes refresh every hour and are shared by everyone from the edge. Charts stay live.',
-        cta: { label: 'Get started', href: '/sign-up' },
+        name: 'Comunidade', price: 'Grátis', cadence: 'A cada hora', perHour: 1,
+        body: 'Este site. As cotações atualizam a cada hora e são compartilhadas por todos. Os gráficos continuam ao vivo.',
+        cta: { label: 'Comece agora', href: '/sign-up' },
     },
     {
-        name: 'OpenStock Cloud', price: '$5', per: '/month', tag: 'Coming soon', cadence: 'Every 15 seconds', perHour: 240,
-        body: 'The same app with live quotes and email price alerts, hosted on a pool of market data keys. Nothing to set up.',
-        cta: { label: 'Get notified on Discord', href: DISCORD_URL },
+        name: 'OpenStock Cloud', price: 'US$ 5', per: '/mês', tag: 'Em breve', cadence: 'A cada 15 segundos', perHour: 240,
+        body: 'O mesmo app com cotações em tempo real e alertas de preço por e-mail, rodando num conjunto de chaves de dados de mercado. Nada para configurar.',
+        cta: { label: 'Receba o aviso no Discord', href: DISCORD_URL },
     },
     {
-        name: 'Self-host', price: 'Free', cadence: 'Your call', perHour: 240,
-        body: 'Run it on your own server with your own Finnhub keys: realtime quotes and alerts for you and your team.',
-        cta: { label: 'Setup guide', href: '#self-host' },
+        name: 'Hospede você mesmo', price: 'Grátis', cadence: 'Você decide', perHour: 240,
+        body: 'Rode no seu próprio servidor com suas chaves do Finnhub: cotações em tempo real e alertas para você e sua equipe.',
+        cta: { label: 'Guia de instalação', href: '#self-host' },
     },
 ];
 
 const SUPPORT = [
     {
-        icon: HeartHandshake, title: 'Sponsor', primary: true,
-        body: 'Monthly tiers from $5, a one-time gift, or a custom partnership. Sponsors are shown on this site, in the app and in the README.',
-        cta: { label: 'See sponsor tiers', href: '/sponsor' },
+        icon: HeartHandshake, title: 'Patrocine', primary: true,
+        body: 'Planos mensais a partir de US$ 5, uma doação única ou uma parceria sob medida. Os patrocinadores aparecem neste site, no app e no README.',
+        cta: { label: 'Ver planos de patrocínio', href: '/sponsor' },
     },
     {
-        icon: GitPullRequest, title: 'Contribute',
-        body: 'Pick a good first issue, improve the docs or design a screen. Every merged pull request keeps OpenStock moving.',
-        cta: { label: 'Good first issues', href: GOOD_FIRST_ISSUES_URL },
+        icon: GitPullRequest, title: 'Contribua',
+        body: 'Escolha uma issue para iniciantes, melhore a documentação ou desenhe uma tela. Cada pull request aceito mantém o OpenStock andando.',
+        cta: { label: 'Issues para iniciantes', href: GOOD_FIRST_ISSUES_URL },
     },
     {
-        icon: Star, title: 'Spread the word',
-        body: 'Star the repo and share it with someone paying for a terminal they barely use.',
-        cta: { label: 'Star on GitHub', href: REPO_URL },
+        icon: Star, title: 'Divulgue',
+        body: 'Dê uma estrela no repositório e mostre para alguém que paga por um terminal que quase não usa.',
+        cta: { label: 'Dar estrela no GitHub', href: REPO_URL },
     },
 ];
 
@@ -73,16 +73,16 @@ const SponsorBanner = () => {
     const [sponsor] = sidebarSponsors();
     if (!sponsor) return null;
     return (
-        <aside aria-label="Sponsor" className="fixed top-[130px] z-30 hidden w-[200px] right-[calc((100vw-1200px)/4-100px)] min-[1680px]:block">
+        <aside aria-label="Patrocinador" className="fixed top-[130px] z-30 hidden w-[200px] right-[calc((100vw-1200px)/4-100px)] min-[1680px]:block">
             <a href={sponsor.url} target="_blank" rel="noreferrer" className="hatch group">
                 <div className="card flex flex-col gap-4 p-5">
-                    <p className="kicker flex items-center gap-1.5 text-brand-ink"><span className="live-dot" /> Sponsor</p>
+                    <p className="kicker flex items-center gap-1.5 text-brand-ink"><span className="live-dot" /> Patrocinador</p>
                     {sponsor.logo && <img src={sponsor.logo} alt={sponsor.iconOnly ? '' : sponsor.name} className="h-14 w-auto self-start" />}
                     <div>
                         <p className="text-[17px] font-bold tracking-[-0.02em]">{sponsor.name}</p>
                         {sponsor.blurb && <p className="mt-1 text-[13px] leading-relaxed text-muted-foreground">{sponsor.blurb}</p>}
                     </div>
-                    <span className="btn btn-ghost h-9 text-[13px] group-hover:bg-[var(--hover)] group-hover:text-foreground">Visit {sponsor.name} <ArrowUpRight /></span>
+                    <span className="btn btn-ghost h-9 text-[13px] group-hover:bg-[var(--hover)] group-hover:text-foreground">Visitar {sponsor.name} <ArrowUpRight /></span>
                 </div>
             </a>
         </aside>
@@ -91,7 +91,7 @@ const SponsorBanner = () => {
 
 export default async function LandingPage() {
     const [session, repo] = await Promise.all([getSession(), getRepoStats()]);
-    const start = session?.user ? { href: '/dashboard', label: 'Open dashboard' } : { href: '/sign-up', label: 'Get started free' };
+    const start = session?.user ? { href: '/dashboard', label: 'Abrir painel' } : { href: '/sign-up', label: 'Comece grátis' };
 
     return (
         <>
@@ -100,17 +100,17 @@ export default async function LandingPage() {
                 <div>
                     <MarketStatus />
                     <h1 className="mt-6 text-[44px] font-bold leading-[1.02] tracking-[-0.05em] md:text-[68px]">
-                        Markets, minus<br />the paywall.
+                        O mercado,<br />sem paywall.
                     </h1>
                     <p className="mt-5 max-w-xl text-[17px] leading-relaxed text-muted-foreground">
-                        OpenStock is an open-source alternative to expensive market platforms. Track prices, watch the whole market and dig into
-                        company insights, built openly, for everyone.
+                        O OpenStock é uma alternativa open source às plataformas de mercado caras. Acompanhe preços, veja o mercado inteiro e
+                        mergulhe nos dados das empresas, feito de forma aberta, para todos.
                     </p>
                     <div className="mt-8 flex flex-wrap items-center gap-2">
                         <Link href={start.href} className="btn btn-primary h-11 px-5 text-[15px]">{start.label}</Link>
                         <a href={REPO_URL} target="_blank" rel="noreferrer" className="btn btn-ghost h-11 px-5 text-[15px]">
-                            <Github /> Self-host it
-                            {repo && <span className="num text-faint">{formatCount(repo.stars)} stars</span>}
+                            <Github /> Hospede você mesmo
+                            {repo && <span className="num text-faint">{formatCount(repo.stars)} estrelas</span>}
                         </a>
                     </div>
                 </div>
@@ -124,7 +124,7 @@ export default async function LandingPage() {
             </section>
 
             <section id="inside" className="mx-auto mt-28 max-w-[1200px] scroll-mt-24 px-5">
-                <SectionHead kicker="What's inside" title="A terminal for people who aren't at a bank." sub="Everything you need to follow the market, in one place, without a subscription." />
+                <SectionHead kicker="O que tem dentro" title="Um terminal para quem não trabalha em banco." sub="Tudo o que você precisa para acompanhar o mercado, num só lugar, sem assinatura." />
                 <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
                     {FEATURES.map(({ icon, title, body }) => (
                         <IconCard key={title} icon={icon} title={title}>{body}</IconCard>
@@ -134,9 +134,9 @@ export default async function LandingPage() {
 
             <section id="data" className="mx-auto mt-28 max-w-[1200px] scroll-mt-24 px-5">
                 <SectionHead
-                    kicker="Data"
-                    title="Pick how fresh your numbers are."
-                    sub="Charts always stream live from TradingView. Quotes, watchlists and alerts come from Finnhub, and this is how often they update."
+                    kicker="Dados"
+                    title="Escolha o quão atualizados são seus números."
+                    sub="Os gráficos vêm sempre ao vivo do TradingView. Cotações, watchlists e alertas vêm do Finnhub e da brapi.dev, e esta é a frequência de atualização."
                 />
                 <div className="grid gap-3 lg:grid-cols-3">
                     {TIERS.map((tier) => (
@@ -152,12 +152,12 @@ export default async function LandingPage() {
                                     <CadenceRail perHour={tier.perHour} />
                                     <p className="num flex justify-between text-[12px] text-faint">
                                         <span>{tier.cadence}</span>
-                                        <span>{tier.perHour} {tier.perHour === 1 ? 'update' : 'updates'} an hour</span>
+                                        <span>{tier.perHour} {tier.perHour === 1 ? 'atualização' : 'atualizações'} por hora</span>
                                     </p>
                                 </div>
                                 <Link
                                     href={tier.cta.href}
-                                    className={cn('btn', tier.name === 'Community' ? 'btn-primary' : 'btn-ghost')}
+                                    className={cn('btn', tier.name === 'Comunidade' ? 'btn-primary' : 'btn-ghost')}
                                     {...(tier.cta.href.startsWith('http') ? { target: '_blank', rel: 'noreferrer' } : {})}
                                 >
                                     {tier.cta.label}
@@ -171,17 +171,17 @@ export default async function LandingPage() {
             <section id="self-host" className="mx-auto mt-28 grid max-w-[1200px] scroll-mt-24 items-start gap-10 px-5 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.15fr)]">
                 <div>
                     <SectionHead
-                        kicker="Self-host"
-                        title="Your server, your keys, live quotes."
-                        sub="Add as many free Finnhub keys as you like: each one adds 60 requests a minute. Switch the data mode to realtime and prices refresh every 15 seconds."
+                        kicker="Hospede você mesmo"
+                        title="Seu servidor, suas chaves, cotações ao vivo."
+                        sub="Adicione quantas chaves gratuitas do Finnhub quiser: cada uma soma 60 requisições por minuto. Mude o modo de dados para realtime e os preços atualizam a cada 15 segundos."
                     />
-                    <a href={`${REPO_URL}#docker-setup`} target="_blank" rel="noreferrer" className="btn btn-ghost">Full setup in the README</a>
+                    <a href={`${REPO_URL}#docker-setup`} target="_blank" rel="noreferrer" className="btn btn-ghost">Instalação completa no README</a>
                 </div>
                 <div className="hatch">
                     <pre className="card mono overflow-x-auto p-5 text-[13px] leading-7 text-muted-foreground">
                         <span className="text-faint">$ </span><span className="text-foreground">git clone {REPO_URL}.git</span>{'\n'}
                         <span className="text-faint">$ </span><span className="text-foreground">cd OpenStock</span>{'\n\n'}
-                        <span className="text-faint"># .env (every variable is in the README)</span>{'\n'}
+                        <span className="text-faint"># .env (todas as variáveis estão no README)</span>{'\n'}
                         <span className="text-brand-ink">FINNHUB_API_KEYS</span>=key_one,key_two,key_three{'\n'}
                         <span className="text-brand-ink">NEXT_PUBLIC_OPENSTOCK_DATA_MODE</span>=realtime{'\n\n'}
                         <span className="text-faint">$ </span><span className="text-foreground">docker compose up -d --build</span>
@@ -191,9 +191,9 @@ export default async function LandingPage() {
 
             <section id="sponsor" className="mx-auto mt-28 max-w-[1200px] scroll-mt-24 px-5">
                 <SectionHead
-                    kicker="Support"
-                    title="OpenStock is open for sponsors."
-                    sub="It stays free because people and companies back it. Pay what you can, or give time instead."
+                    kicker="Apoie"
+                    title="O OpenStock está aberto a patrocinadores."
+                    sub="Ele continua gratuito porque pessoas e empresas o apoiam. Contribua com o que puder, ou doe seu tempo."
                 />
                 <div className="grid gap-3 lg:grid-cols-3">
                     {SUPPORT.map(({ icon, title, body, cta, primary }) => (
@@ -219,20 +219,20 @@ export default async function LandingPage() {
                         <div>
                             <p className="kicker text-brand-ink">Open Dev Society</p>
                             <blockquote className="mt-4 text-[26px] font-semibold leading-snug tracking-[-0.03em] md:text-[30px]">
-                                Technology should belong to everyone. Knowledge should be open, free, and accessible.
+                                A tecnologia deve pertencer a todos. O conhecimento deve ser aberto, gratuito e acessível.
                             </blockquote>
                             <div className="mt-8 flex flex-wrap gap-2">
                                 <Link href={start.href} className="btn btn-primary h-11 px-5 text-[15px]">{start.label}</Link>
-                                <Link href="/about" className="btn btn-ghost h-11 px-5 text-[15px]">Read the manifesto</Link>
+                                <Link href="/about" className="btn btn-ghost h-11 px-5 text-[15px]">Leia o manifesto</Link>
                             </div>
                         </div>
                         {repo && (
                             <dl className="grid grid-cols-2 content-end gap-3">
                                 {[
-                                    ['Stars', formatCount(repo.stars)],
+                                    ['Estrelas', formatCount(repo.stars)],
                                     ['Forks', formatCount(repo.forks)],
-                                    ['License', repo.license ?? 'AGPL-3.0'],
-                                    ['Written in', 'TypeScript'],
+                                    ['Licença', repo.license ?? 'AGPL-3.0'],
+                                    ['Escrito em', 'TypeScript'],
                                 ].map(([label, value]) => (
                                     <div key={label} className="bento-tile col-span-1 bg-page">
                                         <dt className="kicker">{label}</dt>

@@ -22,19 +22,19 @@ export const sendPasswordResetEmail = async (
         const html = `
             <div style="background:#000;padding:32px;font-family:Arial,sans-serif;color:#fff;">
                 <div style="max-width:560px;margin:0 auto;border:1px solid #333;border-radius:12px;padding:32px;background:#111;">
-                    <h1 style="margin:0 0 16px;font-size:28px;">Reset your password</h1>
-                    <p style="margin:0 0 16px;color:#d4d4d8;">Hi ${escapedFirstName},</p>
+                    <h1 style="margin:0 0 16px;font-size:28px;">Redefina sua senha</h1>
+                    <p style="margin:0 0 16px;color:#d4d4d8;">Olá, ${escapedFirstName},</p>
                     <p style="margin:0 0 24px;color:#d4d4d8;line-height:1.6;">
-                        We received a request to reset your Openstock password. Use the button below to choose a new one.
+                        Recebemos um pedido para redefinir sua senha do OpenStock. Use o botão abaixo para escolher uma nova.
                     </p>
                     <a
                         href="${escapedResetUrl}"
                         style="display:inline-block;background:#facc15;color:#111827;padding:12px 20px;border-radius:9999px;text-decoration:none;font-weight:700;"
                     >
-                        Reset password
+                        Redefinir senha
                     </a>
                     <p style="margin:24px 0 0;color:#a1a1aa;line-height:1.6;">
-                        If you did not request this, you can safely ignore this email.
+                        Se você não fez esse pedido, pode ignorar este e-mail com segurança.
                     </p>
                 </div>
             </div>
@@ -43,8 +43,8 @@ export const sendPasswordResetEmail = async (
         const info = await transporter.sendMail({
             from: `"Openstock" <${process.env.NODEMAILER_EMAIL}>`,
             to: email,
-            subject: 'Reset your Openstock password',
-            text: `Reset your password: ${encodeUnsafeUrlChars(resetUrl)}`,
+            subject: 'Redefina sua senha do OpenStock',
+            text: `Redefina sua senha: ${encodeUnsafeUrlChars(resetUrl)}`,
             html,
         });
 

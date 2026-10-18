@@ -20,13 +20,13 @@ export default function OntoLaunchCard() {
 
     return (
         <aside
-            aria-label="Onto on Product Hunt"
+            aria-label="Onto no Product Hunt"
             className="fixed bottom-5 right-5 z-[60] w-[310px] rounded-2xl border border-[var(--line-strong)] bg-[var(--card)] p-4 shadow-[0_16px_40px_rgba(0,0,0,0.5)] max-sm:inset-x-3 max-sm:bottom-3 max-sm:w-auto"
         >
             <button
                 type="button"
                 onClick={() => setClosed(true)}
-                aria-label="Close"
+                aria-label="Fechar"
                 className="absolute right-2 top-2 grid h-7 w-7 place-items-center rounded-lg text-lg leading-none text-[var(--faint)] hover:bg-[var(--hover)] hover:text-[var(--text)]"
             >
                 ×
@@ -34,11 +34,11 @@ export default function OntoLaunchCard() {
             <p className="m-0 mb-2 flex items-center gap-2 font-mono text-[10.5px] uppercase tracking-[0.12em] text-[var(--muted)]">
                 {/* eslint-disable-next-line @next/next/no-img-element -- Onto's mark, served from its own site */}
                 <img src="https://buildonto.dev/icon.png" alt="" width={16} height={16} className="h-4 w-4" />
-                From the OpenStock team
+                Da equipe do OpenStock
             </p>
-            <p className="m-0 text-base font-semibold leading-snug text-[var(--text)]">We just launched Onto on Product Hunt.</p>
+            <p className="m-0 text-base font-semibold leading-snug text-[var(--text)]">Acabamos de lançar o Onto no Product Hunt.</p>
             <p className="m-0 mt-1 mb-3 text-[13.5px] leading-relaxed text-[var(--muted)]">
-                It makes websites readable to AI agents. If you like what we build, an upvote would mean a lot.
+                Ele torna sites legíveis para agentes de IA. Se você gosta do que fazemos, um voto ajudaria muito.
             </p>
             <a
                 href={PH}
@@ -46,7 +46,7 @@ export default function OntoLaunchCard() {
                 rel="noopener"
                 className="flex w-full items-center justify-center rounded-full bg-[var(--brand)] px-4 py-2.5 text-sm font-semibold text-[var(--on-brand)] no-underline hover:bg-[var(--brand-strong)]"
             >
-                ▲ Upvote Onto on Product Hunt
+                ▲ Votar no Onto no Product Hunt
             </a>
         </aside>
     );

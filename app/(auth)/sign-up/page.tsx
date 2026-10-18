@@ -28,7 +28,7 @@ const SignUp = () => {
             fullName: '',
             email: '',
             password: '',
-            country: 'IN',
+            country: 'BR',
             investmentGoals: 'Growth',
             riskTolerance: 'Medium',
             preferredIndustry: 'Technology'
@@ -45,53 +45,53 @@ const SignUp = () => {
                 router.push('/dashboard');
                 return;
             }
-            toast.error('Sign up failed', {
-                description: result.error ?? 'We could not create your account.',
+            toast.error('Falha no cadastro', {
+                description: result.error ?? 'Não conseguimos criar sua conta.',
             });
         } catch (e) {
             console.error(e);
-            toast.error('Sign up failed', {
-                description: e instanceof Error ? e.message : 'Failed to create an account.'
+            toast.error('Falha no cadastro', {
+                description: e instanceof Error ? e.message : 'Não foi possível criar a conta.'
             })
         }
     }
 
     return (
         <>
-            <h1 className="form-title mb-2">Create your account</h1>
-            <p className="mb-8 text-faint">Free and open source. No card needed.</p>
+            <h1 className="form-title mb-2">Crie sua conta</h1>
+            <p className="mb-8 text-faint">Gratuito e open source. Sem cartão de crédito.</p>
 
             <SocialAuthButtons />
 
             <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-8">
-                <section className="flex flex-col gap-4" aria-label="Account">
+                <section className="flex flex-col gap-4" aria-label="Conta">
                     <InputField
                         name="fullName"
-                        label="Full name"
-                        placeholder="Your name"
+                        label="Nome completo"
+                        placeholder="Seu nome"
                         register={register}
                         error={errors.fullName}
-                        validation={{ required: 'Full name is required', minLength: 2 }}
+                        validation={{ required: 'Informe seu nome completo', minLength: 2 }}
                     />
                     <InputField
                         name="email"
-                        label="Email"
-                        placeholder="you@example.com"
+                        label="E-mail"
+                        placeholder="voce@exemplo.com"
                         register={register}
                         error={errors.email}
                         validation={{
-                            required: 'Email is required',
+                            required: 'Informe o e-mail',
                             pattern: {
                                 value: /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/,
-                                message: 'Please enter a valid email address'
+                                message: 'Informe um e-mail válido'
                             }
                         }}
                     />
                     <div className="flex flex-col gap-2">
                         <InputField
                             name="password"
-                            label="Password"
-                            placeholder="At least 8 characters"
+                            label="Senha"
+                            placeholder="Pelo menos 8 caracteres"
                             type="password"
                             register={register}
                             error={errors.password}
@@ -104,25 +104,25 @@ const SignUp = () => {
                 <section className="flex flex-col gap-5 border-t border-line pt-6" aria-labelledby="personalize">
                     <div>
                         <p id="personalize" className="kicker text-brand-ink">Personalize</p>
-                        <p className="mt-1 text-[13px] text-faint">Used to tailor your welcome email.</p>
+                        <p className="mt-1 text-[13px] text-faint">Usado para personalizar seu e-mail de boas-vindas.</p>
                     </div>
                     <CountrySelectField
                         name="country"
-                        label="Country"
+                        label="País"
                         control={control}
                         error={errors.country}
                         required
                     />
-                    <ChoiceChips name="investmentGoals" label="Investment goal" options={INVESTMENT_GOALS} control={control} />
-                    <ChoiceChips name="riskTolerance" label="Risk tolerance" options={RISK_TOLERANCE_OPTIONS} control={control} />
-                    <ChoiceChips name="preferredIndustry" label="Preferred industry" options={PREFERRED_INDUSTRIES} control={control} />
+                    <ChoiceChips name="investmentGoals" label="Objetivo de investimento" options={INVESTMENT_GOALS} control={control} />
+                    <ChoiceChips name="riskTolerance" label="Tolerância a risco" options={RISK_TOLERANCE_OPTIONS} control={control} />
+                    <ChoiceChips name="preferredIndustry" label="Setor preferido" options={PREFERRED_INDUSTRIES} control={control} />
                 </section>
 
                 <div className="flex flex-col gap-4">
                     <Button type="submit" disabled={isSubmitting} className="yellow-btn w-full">
-                        {isSubmitting ? 'Creating account' : 'Create account'}
+                        {isSubmitting ? 'Criando conta' : 'Criar conta'}
                     </Button>
-                    <FooterLink text="Already have an account?" linkText="Sign in" href="/sign-in" />
+                    <FooterLink text="Já tem conta?" linkText="Entrar" href="/sign-in" />
                 </div>
 
                 <OpenDevSocietyBranding outerClassName="flex justify-center" />

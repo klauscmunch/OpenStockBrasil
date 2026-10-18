@@ -8,8 +8,8 @@ import { ACTIVE_SPONSORS, PREVIOUS_SPONSORS, SPONSOR_TIERS, SUPPORTERS, type Spo
 import { cn } from "@/lib/utils";
 
 export const metadata = {
-    title: 'Wall of love',
-    description: 'The sponsors and supporters behind OpenStock, and what people write, post and film about it.',
+    title: 'Mural de carinho',
+    description: 'Os patrocinadores e apoiadores por trás do OpenStock, e o que as pessoas escrevem, postam e gravam sobre ele.',
 };
 
 // Only real posts, videos and articles about OpenStock. X posts render live from X: add the post id, never its text.
@@ -40,23 +40,23 @@ const PRAISE: Praise[] = [
 type WallItem = { name: string; url: string; label: string; logo?: string; iconOnly?: boolean; avatar?: string };
 
 // "Partner", "Company", or "Sponsor" when no tier is recorded
-const tierLabel = (s: Sponsor) => SPONSOR_TIERS.find((t) => t.id === s.tier)?.name ?? 'Sponsor';
+const tierLabel = (s: Sponsor) => SPONSOR_TIERS.find((t) => t.id === s.tier)?.name ?? 'Patrocinador';
 
 const WALL: WallItem[] = [
     ...ACTIVE_SPONSORS.map((s) => ({ name: s.name, url: s.url, logo: s.logo, iconOnly: s.iconOnly, label: tierLabel(s) })),
     ...PREVIOUS_SPONSORS.map((s) => {
-        const label = `Past ${tierLabel(s).toLowerCase()}`;
+        const label = `Ex-${tierLabel(s).toLowerCase()}`;
         return { name: s.name, url: s.url, logo: s.logo, iconOnly: s.iconOnly, label: s.period ? `${label} · ${s.period}` : label };
     }),
-    ...SUPPORTERS.map((s) => ({ name: s.name, url: `https://github.com/${s.login}`, avatar: `https://github.com/${s.login}.png?size=64`, label: 'Supporter' })),
+    ...SUPPORTERS.map((s) => ({ name: s.name, url: `https://github.com/${s.login}`, avatar: `https://github.com/${s.login}.png?size=64`, label: 'Apoiador' })),
 ];
 
 // Prefilled post for the share button. Keep it within X's 280 characters (the link counts as 23, an emoji as 2).
-const SHARE_TEXT = `OpenStock: a free, open-source alternative to paid stock terminals.
+const SHARE_TEXT = `OpenStock: uma alternativa gratuita e open source aos terminais de ações pagos.
 
-TradingView charts, watchlists, a sector heatmap and ⌘K search across every exchange. No subscription, and you can self-host it.
+Gráficos do TradingView, watchlists, mapa de calor por setor e busca ⌘K em todas as bolsas. Sem assinatura, e dá para hospedar por conta própria.
 
-Built by @ravixalgorithm and Open Dev Society 👇`;
+Feito por @ravixalgorithm e Open Dev Society 👇`;
 const SHARE_URL = `https://x.com/intent/post?text=${encodeURIComponent(SHARE_TEXT)}&url=${encodeURIComponent(REPO_URL)}`;
 const EDIT_URL = `${REPO_URL}/edit/main/app/%28marketing%29/love/page.tsx`;
 
@@ -90,7 +90,7 @@ const MarqueeRow = ({ items, reverse }: { items: WallItem[]; reverse?: boolean }
                         className="mr-3 flex h-16 shrink-0 items-center rounded-[14px] px-5 text-[13px] font-semibold text-faint transition-colors hover:text-brand-ink"
                         style={{ backgroundImage: 'repeating-linear-gradient(-45deg, oklch(0.4 0.01 95 / 0.22) 0 1px, transparent 1px 5px)', boxShadow: 'inset 0 0 0 1px var(--line)' }}
                     >
-                        Your name here
+                        Seu nome aqui
                     </Link>
                 </div>
             ))}
@@ -114,7 +114,7 @@ const PraiseCard = ({ praise }: { praise: Praise }) => {
                     </span>
                 </div>
                 <div className="p-5">
-                    <p className="kicker">Video · {praise.channel}</p>
+                    <p className="kicker">Vídeo · {praise.channel}</p>
                     <p className="mt-2 text-[17px] font-bold leading-snug tracking-[-0.02em]">{praise.title}</p>
                 </div>
             </div>
@@ -123,10 +123,10 @@ const PraiseCard = ({ praise }: { praise: Praise }) => {
     return (
         <a href={praise.url} target="_blank" rel="noreferrer" className="hatch group mb-3 break-inside-avoid">
             <div className="card flex flex-col gap-3 p-5">
-                <p className="kicker">Article · {praise.source}</p>
+                <p className="kicker">Artigo · {praise.source}</p>
                 <p className="text-[17px] font-bold leading-snug tracking-[-0.02em]">{praise.title}</p>
                 <span className="flex items-center gap-1 text-[13px] font-semibold text-brand-ink">
-                    Read on {praise.source} <ArrowUpRight className="size-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+                    Ler no {praise.source} <ArrowUpRight className="size-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
                 </span>
             </div>
         </a>
@@ -137,26 +137,26 @@ export default function LovePage() {
     return (
         <>
             <PageHero
-                kicker="Wall of love"
-                title="Thank you for keeping OpenStock free."
-                sub="The sponsors who pay the bills, the supporters who chip in, and everyone who writes, posts or films something about it."
+                kicker="Mural de carinho"
+                title="Obrigado por manter o OpenStock gratuito."
+                sub="Os patrocinadores que pagam as contas, os apoiadores que contribuem e todo mundo que escreve, posta ou grava algo sobre ele."
             >
-                <Link href="/sponsor" className="btn btn-primary h-11 px-5 text-[15px]">Become a sponsor</Link>
-                <a href={SHARE_URL} target="_blank" rel="noreferrer" className="btn btn-ghost h-11 px-5 text-[15px]">Post about OpenStock</a>
+                <Link href="/sponsor" className="btn btn-primary h-11 px-5 text-[15px]">Seja um patrocinador</Link>
+                <a href={SHARE_URL} target="_blank" rel="noreferrer" className="btn btn-ghost h-11 px-5 text-[15px]">Poste sobre o OpenStock</a>
             </PageHero>
 
-            <section className="mt-16 flex flex-col gap-3" aria-label="Sponsors and supporters">
+            <section className="mt-16 flex flex-col gap-3" aria-label="Patrocinadores e apoiadores">
                 <MarqueeRow items={WALL} />
                 <MarqueeRow items={[...WALL].reverse()} reverse />
             </section>
 
             <section className="love-wall mx-auto mt-24 max-w-[1200px] px-5">
-                <SectionHead kicker="In their words" title="What people say about OpenStock." sub="Posts, videos and write-ups from people who found it, used it and told others." />
+                <SectionHead kicker="Nas palavras deles" title="O que dizem sobre o OpenStock." sub="Posts, vídeos e textos de quem encontrou, usou e contou para os outros." />
                 <div className="columns-1 gap-3 md:columns-2 lg:columns-3">
                     {PRAISE.map((praise) => <PraiseCard key={praise.kind === 'post' ? praise.id : praise.url} praise={praise} />)}
                 </div>
                 <p className="mt-6 text-[14px] text-faint">
-                    Made something about OpenStock? <a href={EDIT_URL} target="_blank" rel="noreferrer" className="font-semibold text-brand-ink hover:underline">Add it to this page</a>.
+                    Fez algo sobre o OpenStock? <a href={EDIT_URL} target="_blank" rel="noreferrer" className="font-semibold text-brand-ink hover:underline">Adicione a esta página</a>.
                 </p>
             </section>
         </>

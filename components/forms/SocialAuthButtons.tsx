@@ -42,10 +42,10 @@ const SocialAuthButtons = () => {
                 window.location.href = result.url;
                 return;
             }
-            toast.error('Sign in failed', { description: result.error });
+            toast.error('Falha ao entrar', { description: result.error });
         } catch {
             // Network failure or a stale action after a deploy
-            toast.error('Sign in failed', { description: 'Check your connection and try again.' });
+            toast.error('Falha ao entrar', { description: 'Verifique sua conexão e tente novamente.' });
         }
         setPending(null);
     }
@@ -65,13 +65,13 @@ const SocialAuthButtons = () => {
                         className="h-12 border-gray-600 text-gray-400 text-base rounded-lg cursor-pointer"
                     >
                         {icon}
-                        {pending === id ? 'Redirecting' : label}
+                        {pending === id ? 'Redirecionando' : label}
                     </Button>
                 ))}
             </div>
             <div className="flex items-center gap-3 text-sm text-gray-500">
                 <span className="h-px flex-1 bg-gray-600" />
-                or
+                ou
                 <span className="h-px flex-1 bg-gray-600" />
             </div>
         </div>

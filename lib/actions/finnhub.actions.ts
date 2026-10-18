@@ -4,7 +4,9 @@ import { getDateRange, validateArticle, formatArticle } from '@/lib/utils';
 import { POPULAR_STOCKS } from '@/lib/constants';
 import { cache } from 'react';
 import { QUOTE_TTL_SECONDS } from '@/lib/market-data';
-import { hasFinnhubQuotes } from '@/lib/markets';
+import { hasFinnhubQuotes, hasLiveQuotes, isB3Symbol } from '@/lib/markets';
+import { getB3Profile, getB3Quote, searchB3 } from '@/lib/brapi';
+import { getB3News, getBrazilMarketNews } from '@/lib/br-news';
 import { getSession } from '@/lib/better-auth/auth';
 
 const FINNHUB_BASE_URL = 'https://finnhub.io/api/v1';
@@ -60,6 +62,11 @@ const FINNHUB_EXCHANGE_SUFFIXES = new Set([
     'NS', 'NZ', 'OL', 'PA', 'PR', 'SA', 'SI', 'SS', 'ST', 'SW', 'SZ', 'T',
     'TA', 'TO', 'TW', 'TWO', 'V', 'VI', 'WA',
 ]);
+
+const TYPE_LABEL: Record<string, string> = {
+    'Common Stock': 'Ação', 'Preference': 'Ação preferencial', 'ETP': 'ETF', 'ADR': 'ADR', 'REIT': 'Fundo imobiliário',
+    'Closed-End Fund': 'Fundo fechado', 'Open-End Fund': 'Fundo', 'Unit': 'Unit', 'Right': 'Direito', 'Warrant': 'Warrant',
+};
 
 // Thrown instead of calling Finnhub while an endpoint is in its failure cool-down; not worth logging again.
 class RecentFailure extends Error {}
@@ -166,6 +173,8 @@ function getExchangeLabel(symbol: string, exchange?: string) {
 }
 
 export async function getQuote(symbol: string, revalidateSeconds = 0) {
+    // Finnhub free refuses B3; brapi.dev prices it (shortest cache 15s so brapi isn't hit per view)
+    if (isB3Symbol(symbol)) return getB3Quote(symbol, Math.max(revalidateSeconds, 15));
     try {
         const url = `${FINNHUB_BASE_URL}/quote?symbol=${encodeURIComponent(symbol)}`;
         // Real-time by default; shared views pass a short cache to stay inside Finnhub's 60 req/min
@@ -179,11 +188,12 @@ export async function getQuote(symbol: string, revalidateSeconds = 0) {
 // Shared, short-lived quotes for anything shown live on screen (pages and /api/quotes)
 export async function getLiveQuotes(symbols: string[]) {
     // Symbols the free plan can't price are skipped instead of spending a request on a 403
-    const quotes = await Promise.all(symbols.map((s) => (hasFinnhubQuotes(s) ? getQuote(s, LIVE_QUOTE_TTL) : null)));
+    const quotes = await Promise.all(symbols.map((s) => (hasLiveQuotes(s) ? getQuote(s, LIVE_QUOTE_TTL) : null)));
     return Object.fromEntries(symbols.map((s, i) => [s, quotes[i]?.c ? quotes[i] : null]));
 }
 
 export async function getCompanyProfile(symbol: string) {
+    if (isB3Symbol(symbol)) return getB3Profile(symbol);
     // Profiles exist for stocks Finnhub free covers; crypto pairs and non-US listings have none
     if (symbol.includes(':') || !hasFinnhubQuotes(symbol)) return null;
     try {
@@ -201,7 +211,7 @@ export async function getWatchlistData(symbols: string[]) {
 
     // Fetch quotes and profiles in parallel
     const promises = symbols.map(async (sym) => {
-        const covered = hasFinnhubQuotes(sym);
+        const covered = hasLiveQuotes(sym);
         const [quote, profile] = covered
             ? await Promise.all([getQuote(sym, LIVE_QUOTE_TTL), getCompanyProfile(sym)])
             : [null, null];
@@ -242,8 +252,9 @@ export async function getNews(symbols?: string[]): Promise<MarketNewsArticle[]> 
             await Promise.all(
                 cleanSymbols.map(async (sym) => {
                     try {
+                        // Finnhub has no company news for B3; those come from Google News in Portuguese
                         const url = `${FINNHUB_BASE_URL}/company-news?symbol=${encodeURIComponent(sym)}&from=${range.from}&to=${range.to}`;
-                        const articles = await fetchJSON<RawNewsArticle[]>(url, 300);
+                        const articles = isB3Symbol(sym) ? await getB3News(sym) : await fetchJSON<RawNewsArticle[]>(url, 300);
                         perSymbolArticles[sym] = (articles || []).filter(validateArticle);
                     } catch (e) {
                         console.error('Error fetching company news for', sym, e);
@@ -261,7 +272,7 @@ export async function getNews(symbols?: string[]): Promise<MarketNewsArticle[]> 
                     if (list.length === 0) continue;
                     const article = list.shift();
                     if (!article || !validateArticle(article)) continue;
-                    collected.push(formatArticle(article, true, sym, round));
+                    collected.push(formatArticle(article, true, isB3Symbol(sym) ? sym.replace(/\.SA$/, '') : sym, round));
                     if (collected.length >= maxArticles) break;
                 }
                 if (collected.length >= maxArticles) break;
@@ -273,6 +284,13 @@ export async function getNews(symbols?: string[]): Promise<MarketNewsArticle[]> 
                 return collected.slice(0, maxArticles);
             }
             // If none collected, fall through to general news
+        }
+
+        // A watchlist with nothing recent gets Brazilian market headlines (the weekly email, which passes no
+        // symbols, keeps Finnhub's general news)
+        if (symbols !== undefined) {
+            const brazil = await getBrazilMarketNews();
+            if (brazil.length > 0) return brazil.slice(0, maxArticles);
         }
 
         // General market news fallback or when no symbols provided
@@ -323,8 +341,23 @@ export const searchStocks = cache(async (query?: string): Promise<StockWithWatch
             // A public server action: only signed-in users may spend Finnhub quota on searches
             if (!(await getSession())?.user) return [];
             const url = `${FINNHUB_BASE_URL}/search?q=${encodeURIComponent(trimmed)}`;
-            const data = await fetchJSON<FinnhubSearchResponse>(url, 1800);
-            results = Array.isArray(data?.result) ? data.result : [];
+            // B3 matches come from brapi, which finds Brazilian names and tickers Finnhub misses (e.g. "itau")
+            const [data, b3] = await Promise.all([
+                fetchJSON<FinnhubSearchResponse>(url, 1800).catch((e) => { console.error('Error in Finnhub search:', e); return null; }),
+                searchB3(trimmed).catch(() => []),
+            ]);
+            const finnhub = Array.isArray(data?.result) ? data.result : [];
+            const b3Results: SearchStockCandidate[] = b3.map(({ symbol, name }) => ({ symbol, description: name, displaySymbol: symbol, type: 'Common Stock', __exchange: 'B3' }));
+            const seen = new Set(b3Results.map((r) => r.symbol));
+            // B3 first: Finnhub's fuzzy matches (e.g. Banco Itau Chile for "itau") would otherwise push them past the cap
+            const merged = [...b3Results, ...finnhub.filter((r) => !seen.has((r.symbol || '').toUpperCase()))];
+            // Exact ticker matches first (typing "petr4" should put PETR4.SA on top)
+            const q = trimmed.toUpperCase();
+            const rank = (r: SearchStockCandidate) => {
+                const sym = (r.symbol || '').toUpperCase();
+                return sym === q || sym === `${q}.SA` ? 0 : sym.startsWith(q) ? 1 : 2;
+            };
+            results = merged.map((r, i) => ({ r, i })).sort((a, b) => rank(a.r) - rank(b.r) || a.i - b.i).map(({ r }) => r);
         }
 
         const mapped: StockWithWatchlistStatus[] = results
@@ -333,7 +366,8 @@ export const searchStocks = cache(async (query?: string): Promise<StockWithWatch
                 const name = r.description || upper;
                 const exchangeFromProfile = r.__exchange;
                 const exchange = getExchangeLabel(upper, exchangeFromProfile);
-                const type = r.type || 'Stock';
+                // Finnhub's security types, as a Brazilian investor would call them
+                const type = TYPE_LABEL[r.type ?? ''] ?? r.type ?? 'Ação';
                 const item: StockWithWatchlistStatus = {
                     symbol: upper,
                     name,

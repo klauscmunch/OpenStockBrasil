@@ -20,11 +20,11 @@ type AlertRow = {
 };
 
 const statusOf = (alert: AlertRow) => {
-    if (alert.triggered) return { label: 'Triggered', className: 'pill is-brand' };
-    if (!alertsEnabled) return { label: 'Paused', className: 'pill' };
-    if (alert.expiresAt && new Date(alert.expiresAt) < new Date()) return { label: 'Expired', className: 'pill' };
-    if (alert.active === false) return { label: 'Paused', className: 'pill' };
-    return { label: 'Watching', className: 'pill is-up' };
+    if (alert.triggered) return { label: 'Disparado', className: 'pill is-brand' };
+    if (!alertsEnabled) return { label: 'Pausado', className: 'pill' };
+    if (alert.expiresAt && new Date(alert.expiresAt) < new Date()) return { label: 'Expirado', className: 'pill' };
+    if (alert.active === false) return { label: 'Pausado', className: 'pill' };
+    return { label: 'Ativo', className: 'pill is-up' };
 };
 
 export default function AlertsPanel({ alerts }: { alerts: AlertRow[] }) {
@@ -35,10 +35,10 @@ export default function AlertsPanel({ alerts }: { alerts: AlertRow[] }) {
         setPendingId(alert._id);
         try {
             await deleteAlert(alert._id);
-            toast.success(`Alert for ${alert.symbol} removed`);
+            toast.success(`Alerta de ${alert.symbol} removido`);
             router.refresh();
         } catch {
-            toast.error("Couldn’t remove the alert");
+            toast.error("Não foi possível remover o alerta");
         } finally {
             setPendingId(null);
         }
@@ -48,9 +48,9 @@ export default function AlertsPanel({ alerts }: { alerts: AlertRow[] }) {
         return (
             <div className="empty-state py-10">
                 <span className="empty-icon"><BellRing className="size-5" /></span>
-                <h3>Alerts come with Cloud</h3>
-                <p className="max-w-64 text-[13px]">Email price alerts are part of OpenStock Cloud, $5 a month and coming soon.</p>
-                <Link href="/#data" className="btn btn-ghost mt-2">See OpenStock Cloud</Link>
+                <h3>Alertas fazem parte do Cloud</h3>
+                <p className="max-w-64 text-[13px]">Alertas de preço por e-mail fazem parte do OpenStock Cloud, US$ 5 por mês, em breve.</p>
+                <Link href="/#data" className="btn btn-ghost mt-2">Conhecer o OpenStock Cloud</Link>
             </div>
         );
     }
@@ -59,8 +59,8 @@ export default function AlertsPanel({ alerts }: { alerts: AlertRow[] }) {
         return (
             <div className="empty-state py-10">
                 <span className="empty-icon"><BellRing className="size-5" /></span>
-                <h3>No alerts yet</h3>
-                <p className="max-w-60 text-[13px]">Use the bell on any row, or “Set alert” on a stock page. We email you when it fires.</p>
+                <h3>Nenhum alerta ainda</h3>
+                <p className="max-w-60 text-[13px]">Use o sino em qualquer linha, ou “Criar alerta” na página de uma ação. Avisamos por e-mail quando ele disparar.</p>
             </div>
         );
     }
@@ -69,7 +69,7 @@ export default function AlertsPanel({ alerts }: { alerts: AlertRow[] }) {
         <>
             {!alertsEnabled && (
                 <p className="px-3 pt-3 pb-1 text-[12.5px] text-faint">
-                    Alerts moved to <Link href="/#data" className="text-brand-ink hover:underline">OpenStock Cloud</Link>, so these are paused.
+                    Os alertas passaram para o <Link href="/#data" className="text-brand-ink hover:underline">OpenStock Cloud</Link>, por isso estes estão pausados.
                 </p>
             )}
             <ul className="row-list">
@@ -80,8 +80,8 @@ export default function AlertsPanel({ alerts }: { alerts: AlertRow[] }) {
                             <div className="min-w-0 flex-1">
                                 <p className="mono font-semibold text-foreground">{alert.symbol}</p>
                                 <p className="num truncate text-[12.5px] text-faint">
-                                    {alert.condition === 'ABOVE' ? 'Above' : 'Below'} {formatPrice(alert.targetPrice)}
-                                    {alert.expiresAt && !alert.triggered && ` · until ${new Date(alert.expiresAt).toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}`}
+                                    {alert.condition === 'ABOVE' ? 'Acima de' : 'Abaixo de'} {formatPrice(alert.targetPrice)}
+                                    {alert.expiresAt && !alert.triggered && ` · até ${new Date(alert.expiresAt).toLocaleDateString('pt-BR', { month: 'short', day: 'numeric' })}`}
                                 </p>
                             </div>
                             <span className={status.className}>{status.label}</span>
@@ -90,8 +90,8 @@ export default function AlertsPanel({ alerts }: { alerts: AlertRow[] }) {
                                 onClick={() => handleDelete(alert)}
                                 disabled={pendingId === alert._id}
                                 className="icon-btn is-danger"
-                                title="Remove alert"
-                                aria-label={`Remove alert for ${alert.symbol}`}
+                                title="Remover alerta"
+                                aria-label={`Remover alerta de ${alert.symbol}`}
                             >
                                 <Trash2 />
                             </button>

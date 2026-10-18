@@ -18,7 +18,7 @@ const plexMono = IBM_Plex_Mono({
 
 export const metadata: Metadata = {
   title: "OpenStock",
-  description: "OpenStock is an open-source alternative to expensive market platforms. Track real-time prices, set personalized alerts, and explore detailed company insights — built openly, for everyone, forever free.",
+  description: "OpenStock é uma alternativa open source às plataformas de mercado caras. Acompanhe preços em tempo real, crie alertas personalizados e explore informações detalhadas das empresas — feito de forma aberta, para todos, gratuito para sempre.",
 };
 
 export default function RootLayout({
@@ -27,7 +27,7 @@ export default function RootLayout({
     children: React.ReactNode;
 }>) {
     return (
-        <html lang="en" className="dark">
+        <html lang="pt-BR" className="dark">
             <body
                 className={`${jakarta.variable} ${plexMono.variable} font-sans antialiased`}
             >

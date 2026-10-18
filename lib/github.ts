@@ -16,4 +16,4 @@ export const getRepoStats = cache(async () => {
 });
 
 export const formatCount = (n: number) =>
-    new Intl.NumberFormat('en-US', { notation: 'compact', maximumFractionDigits: 1 }).format(n);
+    new Intl.NumberFormat('pt-BR', { notation: 'compact', maximumFractionDigits: 1 }).format(n);

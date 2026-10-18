@@ -4,7 +4,7 @@ import { getUserWatchlist } from '@/lib/actions/watchlist.actions';
 import { getUserAlerts } from '@/lib/actions/alert.actions';
 import { alertsEnabled } from '@/lib/market-data';
 import { getNews, getWatchlistData } from '@/lib/actions/finnhub.actions';
-import WatchlistTable from '@/components/watchlist/WatchlistTable';
+import WatchlistCards from '@/components/watchlist/WatchlistCards';
 import AlertsPanel from '@/components/watchlist/AlertsPanel';
 import NewsList from '@/components/watchlist/NewsList';
 import Panel from '@/components/Panel';
@@ -24,7 +24,7 @@ const RowsSkeleton = ({ rows = 4 }: { rows?: number }) => (
 );
 
 async function Symbols({ symbols }: { symbols: string[] }) {
-    return <WatchlistTable initialRows={await getWatchlistData(symbols)} />;
+    return <WatchlistCards initialRows={await getWatchlistData(symbols)} />;
 }
 
 async function News({ symbols }: { symbols: string[] }) {
@@ -43,27 +43,27 @@ export default async function WatchlistPage() {
                 <div>
                     <h1 className="page-title">Watchlist</h1>
                     <p className="page-sub num flex flex-wrap items-center gap-x-2">
-                        {symbols.length} {symbols.length === 1 ? 'symbol' : 'symbols'} <span aria-hidden>·</span> <DataFreshness />
+                        {symbols.length} {symbols.length === 1 ? 'ativo' : 'ativos'} <span aria-hidden>·</span> <DataFreshness />
                     </p>
                 </div>
-                <SearchButton className="btn btn-primary"><Plus /> Add symbol</SearchButton>
+                <SearchButton className="btn btn-primary"><Plus /> Adicionar ativo</SearchButton>
             </header>
 
             <div className="grid gap-3 xl:grid-cols-[minmax(0,1fr)_minmax(300px,360px)]">
                 <div className="flex min-w-0 flex-col gap-3">
-                    <Panel title="Symbols" sub="Click a row for charts, technicals and financials">
+                    <Panel title="Ativos" sub="Escolha o período de cada ação · clique no nome para abrir a página completa">
                         <Suspense fallback={<RowsSkeleton rows={Math.max(1, Math.min(symbols.length, 6))} />}>
                             <Symbols symbols={symbols} />
                         </Suspense>
                     </Panel>
-                    <Panel title="News" sub={symbols.length ? 'Latest stories for the symbols you watch' : 'General market news'}>
+                    <Panel title="Notícias" sub={symbols.length ? 'Últimas notícias dos ativos que você acompanha' : 'Notícias gerais do mercado'}>
                         <Suspense fallback={<RowsSkeleton />}>
                             <News symbols={symbols} />
                         </Suspense>
                     </Panel>
                 </div>
 
-                <Panel title="Alerts" sub={alertsEnabled ? `${activeAlerts} active · checked every 5 minutes` : 'An OpenStock Cloud feature'} className="self-start">
+                <Panel title="Alertas" sub={alertsEnabled ? `${activeAlerts} ativos · verificados a cada 5 minutos` : 'Um recurso do OpenStock Cloud'} className="self-start">
                     <AlertsPanel alerts={alerts} />
                 </Panel>
             </div>

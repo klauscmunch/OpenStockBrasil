@@ -202,10 +202,10 @@ describe('getChangeColorClass', () => {
 describe('formatNumber', () => {
     // Finnhub's profile2 marketCapitalization is expressed in millions of USD,
     // which formatNumber scales up by 1e6.
-    it('formats market caps (input in millions) into T/B/M/K suffixes', () => {
-        expect(formatNumber(3_000_000)).toBe('3.00T'); // 3,000,000M => $3T
-        expect(formatNumber(150_000)).toBe('150.00B'); // 150,000M => $150B
-        expect(formatNumber(150)).toBe('150.00M'); // 150M => $150M
+    it('formats market caps (input in millions) with Brazilian suffixes', () => {
+        expect(formatNumber(3_000_000)).toBe('3,00 tri'); // 3,000,000M => 3 trilhões
+        expect(formatNumber(150_000)).toBe('150,00 bi'); // 150,000M => 150 bilhões
+        expect(formatNumber(150)).toBe('150,00 mi'); // 150M => 150 milhões
     });
 
     it('returns N/A for missing or non-finite market caps', () => {

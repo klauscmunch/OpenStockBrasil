@@ -33,61 +33,61 @@ const SignIn = () => {
                 router.push('/dashboard');
                 return;
             }
-            toast.error('Sign in failed', {
-                description: result.error ?? 'Invalid email or password.',
+            toast.error('Falha ao entrar', {
+                description: result.error ?? 'E-mail ou senha inválidos.',
             });
         } catch (e) {
             console.error(e);
-            toast.error('Sign in failed', {
-                description: e instanceof Error ? e.message : 'Failed to sign in.'
+            toast.error('Falha ao entrar', {
+                description: e instanceof Error ? e.message : 'Não foi possível entrar.'
             })
         }
     }
 
     return (
         <>
-            <h1 className="form-title mb-2">Welcome back</h1>
-            <p className="mb-8 text-faint">Sign in to your watchlist and alerts.</p>
+            <h1 className="form-title mb-2">Bem-vindo de volta</h1>
+            <p className="mb-8 text-faint">Entre para ver sua watchlist e seus alertas.</p>
 
             <SocialAuthButtons />
 
             <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
                 <InputField
                     name="email"
-                    label="Email"
-                    placeholder="opendevsociety@cc.cc"
+                    label="E-mail"
+                    placeholder="voce@exemplo.com"
                     register={register}
                     error={errors.email}
                     validation={{
-                        required: 'Email is required',
+                        required: 'Informe o e-mail',
                         pattern: {
                             value: /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/,
-                            message: 'Please enter a valid email address'
+                            message: 'Informe um e-mail válido'
                         }
                     }}
                 />
 
                 <InputField
                     name="password"
-                    label="Password"
-                    placeholder="Enter your password"
+                    label="Senha"
+                    placeholder="Digite sua senha"
                     type="password"
                     register={register}
                     error={errors.password}
-                    validation={{ required: 'Password is required', minLength: 8 }}
+                    validation={{ required: 'Informe a senha', minLength: 8 }}
                 />
 
                 <div className="flex justify-end">
                     <Link href="/forgot-password" className="footer-link text-sm">
-                        Forgot password?
+                        Esqueceu a senha?
                     </Link>
                 </div>
 
                 <Button type="submit" disabled={isSubmitting} className="yellow-btn w-full mt-5">
-                    {isSubmitting ? 'Signing In' : 'Sign In'}
+                    {isSubmitting ? 'Entrando' : 'Entrar'}
                 </Button>
 
-                <FooterLink text="Don't have an account?" linkText="Create an account" href="/sign-up" />
+                <FooterLink text="Ainda não tem conta?" linkText="Criar conta" href="/sign-up" />
                 <OpenDevSocietyBranding outerClassName="mt-10 flex justify-center" />
             </form>
         </>

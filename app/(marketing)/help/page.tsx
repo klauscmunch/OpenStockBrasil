@@ -6,56 +6,56 @@ import IconCard from '@/components/marketing/IconCard';
 import { DISCORD_URL, REPO_URL } from '@/lib/constants';
 
 export const metadata: Metadata = {
-    title: 'Help | OpenStock',
-    description: 'Community-driven support for OpenStock. No paywalls, just help.',
+    title: 'Ajuda | OpenStock',
+    description: 'Suporte feito pela comunidade do OpenStock. Sem paywalls, só ajuda.',
 };
 
 const FAQS = [
     {
-        question: 'Is OpenStock really free?',
-        answer: 'Yes. We run on sponsors and community contributions. Charts, watchlists and research stay free. OpenStock Cloud, coming soon, adds live quotes and email price alerts for $5 a month. Self-hosting includes both.',
+        question: 'O OpenStock é mesmo gratuito?',
+        answer: 'Sim. Vivemos de patrocínios e contribuições da comunidade. Gráficos, watchlists e pesquisa continuam gratuitos. O OpenStock Cloud, em breve, adiciona cotações em tempo real e alertas de preço por e-mail por US$ 5 por mês. Hospedando por conta própria você tem os dois.',
     },
     {
-        question: 'How do I add a stock to my watchlist?',
-        answer: 'Press ⌘K (or Search stocks in the sidebar), open the company, then press Watch. It shows up in your watchlist and in the sidebar.',
+        question: 'Como adiciono uma ação à minha watchlist?',
+        answer: 'Aperte ⌘K (ou Buscar ações no menu lateral), abra a empresa e clique em Acompanhar. Ela aparece na sua watchlist e no menu lateral.',
     },
     {
-        question: 'Where does the market data come from?',
-        answer: 'Charts come live from TradingView. Quotes, watchlist prices and alerts come from Finnhub; on this site they refresh hourly and every price shows when it was last traded.',
+        question: 'De onde vêm os dados de mercado?',
+        answer: 'Os gráficos vêm ao vivo do TradingView. As cotações da B3 vêm da brapi.dev; as dos EUA e de cripto, do Finnhub. As notícias das ações brasileiras vêm do Google Notícias. Cada preço mostra o horário do último negócio.',
     },
     {
-        question: 'Which markets are supported?',
-        answer: 'US stocks, crypto and forex live; Canada and Australia delayed; India (through BSE) and Germany end of day. Alerts work for US stocks and crypto.',
+        question: 'Quais mercados são suportados?',
+        answer: 'Brasil (B3), com cotações pela brapi.dev; ações dos EUA, cripto e forex em tempo real; Canadá e Austrália com atraso; Índia (pela BSE) e Alemanha com dados de fim do dia. Os alertas funcionam para ações dos EUA e cripto.',
     },
     {
-        question: 'My alert hasn’t fired.',
-        answer: 'Price alerts are part of OpenStock Cloud (or a self-hosted instance in realtime mode). There they are checked every five minutes and emailed to your account address when the price crosses your target. Check the alert’s status on the watchlist page.',
+        question: 'Meu alerta não disparou.',
+        answer: 'Os alertas de preço fazem parte do OpenStock Cloud (ou de uma instalação própria no modo realtime). Lá eles são verificados a cada cinco minutos e enviados para o e-mail da sua conta quando o preço cruza o seu alvo. Confira o status do alerta na página da watchlist.',
     },
     {
-        question: 'Can I contribute code or designs?',
-        answer: 'Absolutely. Issues labelled “good first issue” are a good start. We welcome designers, developers and writers alike.',
+        question: 'Posso contribuir com código ou design?',
+        answer: 'Com certeza. As issues marcadas como “good first issue” são um bom começo. Designers, desenvolvedores e redatores são todos bem-vindos.',
     },
 ];
 
 export default function HelpPage() {
     return (
         <>
-            <PageHero kicker="Help" title="How can we help?" sub="Community-powered support for everyone." />
+            <PageHero kicker="Ajuda" title="Como podemos ajudar?" sub="Suporte feito pela comunidade, para todos." />
 
             <section className="mx-auto mt-14 grid max-w-[1200px] gap-3 px-5 md:grid-cols-3">
-                <IconCard icon={BookOpen} title="How it works" footer={<a href="/api-docs" className="btn btn-ghost w-full">Read the architecture</a>}>
-                    Data sources, background jobs and the AI behind the emails.
+                <IconCard icon={BookOpen} title="Como funciona" footer={<a href="/api-docs" className="btn btn-ghost w-full">Ler sobre a arquitetura</a>}>
+                    Fontes de dados, tarefas em segundo plano e a IA por trás dos e-mails.
                 </IconCard>
-                <IconCard icon={MessageCircle} title="Community chat" footer={<a href={DISCORD_URL} target="_blank" rel="noreferrer" className="btn btn-ghost w-full">Join Discord</a>}>
-                    Get answers from other users and the maintainers.
+                <IconCard icon={MessageCircle} title="Chat da comunidade" footer={<a href={DISCORD_URL} target="_blank" rel="noreferrer" className="btn btn-ghost w-full">Entrar no Discord</a>}>
+                    Tire dúvidas com outros usuários e com os mantenedores.
                 </IconCard>
-                <IconCard icon={Github} title="Report a bug" footer={<a href={`${REPO_URL}/issues`} target="_blank" rel="noreferrer" className="btn btn-ghost w-full">Open an issue</a>}>
-                    Found something broken? Tell us on GitHub.
+                <IconCard icon={Github} title="Reportar um bug" footer={<a href={`${REPO_URL}/issues`} target="_blank" rel="noreferrer" className="btn btn-ghost w-full">Abrir uma issue</a>}>
+                    Encontrou algo quebrado? Conte para a gente no GitHub.
                 </IconCard>
             </section>
 
             <section className="mx-auto mt-24 max-w-[1200px] px-5">
-                <SectionHead kicker="FAQ" title="Common questions." />
+                <SectionHead kicker="Perguntas frequentes" title="Dúvidas comuns." />
                 <div className="hatch">
                     <div className="card row-list overflow-hidden">
                         {FAQS.map(({ question, answer }) => (
@@ -76,10 +76,10 @@ export default function HelpPage() {
                 <div className="hatch">
                     <div className="card flex flex-col items-start justify-between gap-5 p-8 md:flex-row md:items-center">
                         <div>
-                            <h2 className="text-[22px] font-bold tracking-[-0.03em]">Still stuck?</h2>
-                            <p className="mt-1 text-muted-foreground">Our team and community answer emails, for free.</p>
+                            <h2 className="text-[22px] font-bold tracking-[-0.03em]">Ainda com dúvida?</h2>
+                            <p className="mt-1 text-muted-foreground">Nossa equipe e a comunidade respondem e-mails, de graça.</p>
                         </div>
-                        <a href="mailto:opendevsociety@gmail.com" className="btn btn-primary h-11 px-5 text-[15px]">Email support</a>
+                        <a href="mailto:opendevsociety@gmail.com" className="btn btn-primary h-11 px-5 text-[15px]">Suporte por e-mail</a>
                     </div>
                 </div>
             </section>

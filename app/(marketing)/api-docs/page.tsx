@@ -5,55 +5,58 @@ import IconCard from '@/components/marketing/IconCard';
 import { REPO_URL } from '@/lib/constants';
 
 export const metadata = {
-    title: 'Architecture | OpenStock',
-    description: 'How OpenStock works: market data, background jobs and the AI behind the emails.',
+    title: 'Arquitetura | OpenStock',
+    description: 'Como o OpenStock funciona: dados de mercado, tarefas em segundo plano e a IA por trás dos e-mails.',
 };
 
 const DATA_MODES = [
-    { name: 'Cached', cadence: 'Hourly', body: 'Default for the public site. Quotes are fetched once an hour and shared by every user, so cost grows with symbols, not people.' },
-    { name: 'Realtime', cadence: 'Every 15 seconds', body: 'For OpenStock Cloud and self-hosting. Set NEXT_PUBLIC_OPENSTOCK_DATA_MODE=realtime and on-screen prices refresh live and email price alerts turn on.' },
+    { name: 'Em cache', cadence: 'A cada hora', body: 'Padrão do site público. As cotações são buscadas uma vez por hora e compartilhadas por todos os usuários, então o custo cresce com o número de ativos, não de pessoas.' },
+    { name: 'Tempo real', cadence: 'A cada 15 segundos', body: 'Para o OpenStock Cloud e instalações próprias. Defina NEXT_PUBLIC_OPENSTOCK_DATA_MODE=realtime e os preços na tela passam a atualizar ao vivo, e os alertas de preço por e-mail são ativados.' },
 ];
 
 const COVERAGE = [
-    ['US stocks, crypto', 'Live', 'Yes'],
-    ['Forex', 'Live', 'No'],
-    ['Canada, Australia', 'Delayed', 'No'],
-    ['India (BSE), Germany', 'End of day', 'No'],
+    ['Brasil (B3)', 'Com atraso', 'Cotações sim (brapi.dev), alertas não'],
+    ['Ações dos EUA, cripto', 'Tempo real', 'Sim'],
+    ['Forex', 'Tempo real', 'Não'],
+    ['Canadá, Austrália', 'Com atraso', 'Não'],
+    ['Índia (BSE), Alemanha', 'Fim do dia', 'Não'],
 ];
 
-const FLOW = ['A user signs up, or a cron fires', 'Inngest runs the function', 'Gemini writes the text', 'MiniMax takes over if Gemini fails', 'The email goes out'];
+const FLOW = ['Um usuário se cadastra, ou um agendamento dispara', 'O Inngest executa a função', 'O Gemini escreve o texto', 'O MiniMax assume se o Gemini falhar', 'O e-mail é enviado'];
 
 const JOBS = [
-    { icon: Mail, title: 'Welcome email', trigger: 'On sign-up', body: 'An AI-written intro tailored to the country, goal, risk and industry picked at sign-up.' },
-    { icon: BarChart2, title: 'Weekly news', trigger: 'Mon 09:00', body: 'Summarises the week’s market news and sends it as a Kit broadcast.' },
-    { icon: Clock, title: 'Price alerts', trigger: 'Every 5 min', body: 'Checks every active alert against Finnhub quotes and emails the owner when one fires. Realtime mode only.' },
-    { icon: UserX, title: 'Re-engagement', trigger: 'Daily 10:00', body: 'Finds dormant accounts and sends a gentle nudge.' },
+    { icon: Mail, title: 'E-mail de boas-vindas', trigger: 'No cadastro', body: 'Uma introdução escrita por IA, personalizada pelo país, objetivo, risco e setor escolhidos no cadastro.' },
+    { icon: BarChart2, title: 'Notícias da semana', trigger: 'Seg 09:00', body: 'Resume as notícias de mercado da semana e envia como uma transmissão do Kit.' },
+    { icon: Clock, title: 'Alertas de preço', trigger: 'A cada 5 min', body: 'Confere cada alerta ativo com as cotações do Finnhub e avisa o dono por e-mail quando um dispara. Só no modo tempo real.' },
+    { icon: UserX, title: 'Reengajamento', trigger: 'Diário 10:00', body: 'Encontra contas inativas e manda um lembrete gentil.' },
 ];
 
 const STACK = [
-    ['Finnhub', 'Quotes, company profiles, search and news. A pool of keys, rotated per request.', 'https://finnhub.io'],
-    ['TradingView', 'Charts, heatmaps, technicals and market widgets, embedded live.', 'https://www.tradingview.com/widget/'],
-    ['Inngest', 'Background jobs and schedules, with retries.', 'https://www.inngest.com'],
-    ['Better Auth', 'Email, Google and GitHub sign-in with MongoDB sessions.', 'https://www.better-auth.com'],
-    ['MongoDB Atlas', 'Users, watchlists and alerts.', 'https://www.mongodb.com/atlas'],
-    ['Kit', 'Newsletter broadcasts for the weekly digest.', 'https://kit.com'],
+    ['brapi.dev', 'Cotações, perfis e busca das ações da B3.', 'https://brapi.dev'],
+    ['Google Notícias', 'Notícias em português das ações brasileiras.', 'https://news.google.com'],
+    ['Finnhub', 'Cotações, perfis de empresas, busca e notícias dos EUA. Um conjunto de chaves, alternadas a cada requisição.', 'https://finnhub.io'],
+    ['TradingView', 'Gráficos, mapas de calor, análise técnica e widgets de mercado, embutidos ao vivo.', 'https://www.tradingview.com/widget/'],
+    ['Inngest', 'Tarefas em segundo plano e agendamentos, com novas tentativas.', 'https://www.inngest.com'],
+    ['Better Auth', 'Login por e-mail, Google e GitHub com sessões no MongoDB.', 'https://www.better-auth.com'],
+    ['MongoDB Atlas', 'Usuários, watchlists e alertas.', 'https://www.mongodb.com/atlas'],
+    ['Kit', 'Envio da newsletter com o resumo semanal.', 'https://kit.com'],
 ];
 
 export default function ArchitecturePage() {
     return (
         <>
             <PageHero
-                kicker="Architecture"
-                title="How OpenStock works."
-                sub="A transparent look at the event-driven, multi-provider system behind your market data and emails."
+                kicker="Arquitetura"
+                title="Como o OpenStock funciona."
+                sub="Um olhar transparente sobre o sistema orientado a eventos e com vários provedores por trás dos seus dados de mercado e e-mails."
             >
                 <span className="pill h-8 px-3">v1.0.0</span>
-                <span className="pill h-8 px-3">Gemini with MiniMax fallback</span>
+                <span className="pill h-8 px-3">Gemini com MiniMax de reserva</span>
                 <span className="pill h-8 px-3">Open source · AGPL-3.0</span>
             </PageHero>
 
             <section className="mx-auto mt-20 max-w-[1200px] px-5">
-                <SectionHead kicker="Market data" title="Two data modes, one cache." sub="Charts always stream from TradingView. Everything we price ourselves goes through a shared cache with timeouts, so a slow provider never stalls a page." />
+                <SectionHead kicker="Dados de mercado" title="Dois modos de dados, um cache." sub="Os gráficos vêm sempre ao vivo do TradingView. Tudo o que cotamos por conta própria passa por um cache compartilhado com limites de tempo, para que um provedor lento nunca trave a página." />
                 <div className="grid gap-3 md:grid-cols-2">
                     {DATA_MODES.map(({ name, cadence, body }) => (
                         <div key={name} className="hatch">
@@ -70,25 +73,25 @@ export default function ArchitecturePage() {
                 <div className="hatch mt-3">
                     <div className="card overflow-x-auto">
                         <table className="data-table">
-                            <thead><tr><th>Market</th><th>Charts</th><th>Our quotes and alerts</th></tr></thead>
+                            <thead><tr><th>Mercado</th><th>Gráficos</th><th>Nossas cotações e alertas</th></tr></thead>
                             <tbody>
                                 {COVERAGE.map(([market, charts, quotes]) => (
                                     <tr key={market}>
                                         <td className="font-semibold text-foreground">{market}</td>
                                         <td className="text-muted-foreground">{charts}</td>
-                                        <td><span className={quotes === 'Yes' ? 'pill is-up' : 'pill'}>{quotes}</span></td>
+                                        <td><span className={quotes !== 'Não' ? 'pill is-up' : 'pill'}>{quotes}</span></td>
                                     </tr>
                                 ))}
                             </tbody>
                         </table>
                     </div>
                 </div>
-                <a href={`${REPO_URL}/blob/main/MARKET_SUPPORT.md`} target="_blank" rel="noreferrer" className="btn btn-ghost mt-4">Full market support notes</a>
+                <a href={`${REPO_URL}/blob/main/MARKET_SUPPORT.md`} target="_blank" rel="noreferrer" className="btn btn-ghost mt-4">Notas completas sobre os mercados</a>
             </section>
 
             <section className="mx-auto mt-24 grid max-w-[1200px] items-start gap-10 px-5 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]">
                 <div>
-                    <SectionHead kicker="AI" title="Emails that don’t go down with a provider." sub="Welcome emails and news summaries are written by Gemini 2.5 Flash-Lite. If it fails, the request is retried on MiniMax-M3, or any OpenAI-compatible provider you configure." />
+                    <SectionHead kicker="IA" title="E-mails que não caem junto com um provedor." sub="Os e-mails de boas-vindas e os resumos de notícias são escritos pelo Gemini 2.5 Flash-Lite. Se ele falhar, a requisição é refeita no MiniMax-M3, ou em qualquer provedor compatível com a OpenAI que você configurar." />
                 </div>
                 <div className="hatch">
                     <ol className="card flex flex-col gap-1 p-4">
@@ -103,7 +106,7 @@ export default function ArchitecturePage() {
             </section>
 
             <section className="mx-auto mt-24 max-w-[1200px] px-5">
-                <SectionHead kicker="Background jobs" title="Four jobs keep things moving." />
+                <SectionHead kicker="Tarefas em segundo plano" title="Quatro tarefas mantêm tudo funcionando." />
                 <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
                     {JOBS.map(({ icon, title, trigger, body }) => (
                         <IconCard key={title} icon={icon} title={title} footer={<span className="pill mono">{trigger}</span>}>{body}</IconCard>
@@ -112,7 +115,7 @@ export default function ArchitecturePage() {
             </section>
 
             <section className="mx-auto mt-24 max-w-[1200px] px-5">
-                <SectionHead kicker="Stack" title="Built on services you can inspect." />
+                <SectionHead kicker="Stack" title="Construído sobre serviços que você pode inspecionar." />
                 <div className="hatch">
                     <div className="card row-list">
                         {STACK.map(([name, body, url]) => (

@@ -30,48 +30,48 @@ const ForgotPasswordPage = () => {
             const result = await requestPasswordResetEmail(data);
 
             if (result.success) {
-                toast.success('If an account exists for that email, a reset link has been sent.');
+                toast.success('Se existir uma conta com esse e-mail, enviamos um link para redefinir a senha.');
                 return;
             }
 
-            toast.error('Password reset unavailable', {
-                description: result.error ?? 'Unable to start password reset.',
+            toast.error('Redefinição de senha indisponível', {
+                description: result.error ?? 'Não foi possível iniciar a redefinição de senha.',
             });
         } catch (error) {
-            toast.error('Password reset unavailable', {
-                description: error instanceof Error ? error.message : 'Unable to start password reset.',
+            toast.error('Redefinição de senha indisponível', {
+                description: error instanceof Error ? error.message : 'Não foi possível iniciar a redefinição de senha.',
             });
         }
     };
 
     return (
         <>
-            <h1 className="form-title">Forgot your password?</h1>
+            <h1 className="form-title">Esqueceu sua senha?</h1>
             <p className="text-sm text-gray-400 mb-6">
-                Enter your email address and we&apos;ll send you a password reset link.
+                Informe seu e-mail e enviaremos um link para redefinir a senha.
             </p>
 
             <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
                 <InputField
                     name="email"
-                    label="Email"
-                    placeholder="opendevsociety@cc.cc"
+                    label="E-mail"
+                    placeholder="voce@exemplo.com"
                     register={register}
                     error={errors.email}
                     validation={{
-                        required: 'Email is required',
+                        required: 'Informe o e-mail',
                         pattern: {
                             value: /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/,
-                            message: 'Please enter a valid email address',
+                            message: 'Informe um e-mail válido',
                         },
                     }}
                 />
 
                 <Button type="submit" disabled={isSubmitting} className="yellow-btn w-full mt-5">
-                    {isSubmitting ? 'Sending reset link' : 'Send reset link'}
+                    {isSubmitting ? 'Enviando link' : 'Enviar link de redefinição'}
                 </Button>
 
-                <FooterLink text="Remembered it?" linkText="Sign in" href="/sign-in" />
+                <FooterLink text="Lembrou a senha?" linkText="Entrar" href="/sign-in" />
                 <OpenDevSocietyBranding outerClassName="mt-10 flex justify-center" />
             </form>
         </>

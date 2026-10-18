@@ -56,8 +56,8 @@ export const sendWelcomeEmail = async ({ email, name, intro }: WelcomeEmailData)
         const mailOptions = {
             from: `"Openstock" <${process.env.NODEMAILER_EMAIL}>`,
             to: email,
-            subject: `Welcome to Openstock - your open-source stock market toolkit!`,
-            text: 'Thanks for joining Openstock, an initiative by open dev society',
+            subject: `Boas-vindas ao OpenStock - seu kit open source para o mercado de ações!`,
+            text: 'Obrigado por entrar no OpenStock, uma iniciativa da Open Dev Society',
             html: htmlTemplate,
         };
 
@@ -86,7 +86,7 @@ export const sendNewsSummaryEmail = async (
         const mailOptions = {
             from: `"Openstock" <${process.env.NODEMAILER_EMAIL}>`,
             to: email,
-            subject: `📈 Market News Summary Today - ${date}`,
+            subject: `📈 Resumo das notícias do mercado de hoje - ${date}`,
             text: `Today's market news summary from Openstock`,
             html: htmlTemplate,
         };
@@ -113,20 +113,20 @@ export const sendStockAlertEmail = async (
         const isUpper = condition === 'ABOVE';
         // Binance pairs are quoted in USDT, everything else Finnhub prices here is USD
         const money = (value: number) => symbol.startsWith('BINANCE:')
-            ? `${value.toLocaleString('en-US', { maximumFractionDigits: value < 1 ? 6 : 2 })} USDT`
+            ? `${value.toLocaleString('pt-BR', { maximumFractionDigits: value < 1 ? 6 : 2 })} USDT`
             : formatPrice(value);
         const htmlTemplate = (isUpper ? STOCK_ALERT_UPPER_EMAIL_TEMPLATE : STOCK_ALERT_LOWER_EMAIL_TEMPLATE)
             .replaceAll('{{symbol}}', escapeHtml(symbol))
             .replaceAll('{{company}}', '') // Alerts don't store the company name
             .replaceAll('{{currentPrice}}', money(currentPrice))
             .replaceAll('{{targetPrice}}', money(targetPrice))
-            .replaceAll('{{timestamp}}', new Date().toUTCString());
+            .replaceAll('{{timestamp}}', new Date().toLocaleString('pt-BR', { timeZone: 'America/Sao_Paulo' }));
 
         const mailOptions = {
             from: `"Openstock" <${process.env.NODEMAILER_EMAIL}>`,
             to: email,
-            subject: `🔔 Price Alert: ${symbol} is ${isUpper ? 'above' : 'below'} ${money(targetPrice)}`,
-            text: `${symbol} is now ${money(currentPrice)}, ${isUpper ? 'above' : 'below'} your target of ${money(targetPrice)}.`,
+            subject: `🔔 Alerta de preço: ${symbol} está ${isUpper ? 'acima de' : 'abaixo de'} ${money(targetPrice)}`,
+            text: `${symbol} está agora em ${money(currentPrice)}, ${isUpper ? 'acima' : 'abaixo'} do seu alvo de ${money(targetPrice)}.`,
             html: htmlTemplate,
         };
 

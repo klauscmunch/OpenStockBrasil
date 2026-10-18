@@ -19,7 +19,7 @@ async function Sentiment({ symbol }: { symbol: string }) {
     const insight = await getStockSentimentInsights(symbol);
     if (!insight) return null;
     return (
-        <Panel title="Sentiment" sub="Reddit, X.com, news and Polymarket">
+        <Panel title="Sentimento" sub="Reddit, X.com, notícias e Polymarket">
             <StockSentimentCard insight={insight} />
         </Panel>
     );
@@ -43,20 +43,20 @@ export default async function StockDetails({ params }: StockDetailsPageProps) {
                         <StockChart tvSymbol={tvSymbol} scriptUrl={`${scriptUrl}advanced-chart.js`} />
                     ) : (
                         // TradingView refuses this exchange's chart in embeds; say so instead of showing its error
-                        <Panel title="Chart" sub="Only on TradingView for this exchange">
+                        <Panel title="Gráfico" sub="Disponível só no TradingView para esta bolsa">
                             <div className="empty-state py-14">
                                 <span className="empty-icon"><CandlestickChart className="size-5" /></span>
-                                <h3>Chart not available here</h3>
+                                <h3>Gráfico indisponível aqui</h3>
                                 <p className="max-w-80 text-[13px]">
-                                    TradingView doesn’t license {tvSymbol.split(':')[0]} charts for other sites. Financials, technicals and the profile below still work.
+                                    O TradingView não libera gráficos da {tvSymbol.split(':')[0]} para outros sites. Os dados financeiros, a análise técnica e o perfil abaixo continuam funcionando.
                                 </p>
                                 <a href={tradingViewSymbolUrl(tvSymbol)} target="_blank" rel="noopener noreferrer" className="btn btn-ghost mt-2">
-                                    Open chart on TradingView
+                                    Abrir gráfico no TradingView
                                 </a>
                             </div>
                         </Panel>
                     )}
-                    <Panel title="Financials" sub="Income statement, balance sheet and ratios">
+                    <Panel title="Dados financeiros" sub="DRE, balanço patrimonial e indicadores">
                         <TradingViewWidget
                             scriptUrl={`${scriptUrl}financials.js`}
                             config={COMPANY_FINANCIALS_WIDGET_CONFIG(tvSymbol)}
@@ -66,7 +66,7 @@ export default async function StockDetails({ params }: StockDetailsPageProps) {
                 </div>
 
                 <div className="flex min-w-0 flex-col gap-3">
-                    <Panel title="Technicals" sub="Oscillators and moving averages, 1h">
+                    <Panel title="Análise técnica" sub="Osciladores e médias móveis, 1h">
                         <TradingViewWidget
                             scriptUrl={`${scriptUrl}technical-analysis.js`}
                             config={TECHNICAL_ANALYSIS_WIDGET_CONFIG(tvSymbol)}
@@ -76,7 +76,7 @@ export default async function StockDetails({ params }: StockDetailsPageProps) {
                     <Suspense fallback={null}>
                         <Sentiment symbol={symbol} />
                     </Suspense>
-                    <Panel title="Profile" sub="What the company does">
+                    <Panel title="Perfil" sub="O que a empresa faz">
                         <TradingViewWidget
                             scriptUrl={`${scriptUrl}symbol-profile.js`}
                             config={COMPANY_PROFILE_WIDGET_CONFIG(tvSymbol)}

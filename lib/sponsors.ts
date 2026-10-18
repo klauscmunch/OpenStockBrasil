@@ -41,28 +41,28 @@ export const SPONSOR_TIERS: {
 }[] = [
     {
         id: 'backer', name: 'Backer', monthly: 5,
-        blurb: 'For people who use OpenStock and want it to stay free.',
-        perks: ['Your name in the README sponsor list', 'Our thanks, every month'],
+        blurb: 'Para quem usa o OpenStock e quer que ele continue gratuito.',
+        perks: ['Seu nome na lista de patrocinadores do README', 'Nosso agradecimento, todo mês'],
     },
     {
         id: 'supporter', name: 'Supporter', monthly: 25,
-        blurb: 'For regulars who want to be seen backing open source.',
-        perks: ['Everything in Backer', 'Name and avatar on the sponsor wall', 'Listed on this page'],
+        blurb: 'Para usuários frequentes que querem aparecer apoiando o open source.',
+        perks: ['Tudo do Backer', 'Nome e avatar no mural de patrocinadores', 'Listado nesta página'],
     },
     {
         id: 'company', name: 'Company', monthly: 100, featured: true,
-        blurb: 'For teams and products that reach developers and investors.',
-        perks: ['Logo in the footer of every public page', 'Logo in the README', 'Logo on this page, linked to your site'],
+        blurb: 'Para equipes e produtos que querem alcançar desenvolvedores e investidores.',
+        perks: ['Logo no rodapé de todas as páginas públicas', 'Logo no README', 'Logo nesta página, com link para o seu site'],
     },
     {
         id: 'partner', name: 'Partner', monthly: 500, slots: SIDEBAR_SPONSOR_SLOTS,
-        blurb: 'The most visible spots in OpenStock, limited to three.',
-        perks: ['Everything in Company', `One of three sponsor slots in the app sidebar, seen by ${REGISTERED_USERS} registered users`, 'Logo on the landing page'],
+        blurb: 'Os espaços mais visíveis do OpenStock, limitados a três.',
+        perks: ['Tudo do Company', `Uma das três vagas de patrocínio no menu lateral do app, vista por ${REGISTERED_USERS} usuários cadastrados`, 'Logo na página inicial'],
     },
 ];
 
 export const ACTIVE_SPONSORS: Sponsor[] = [
-    { name: 'Orbit', url: 'https://github.com/diip3sh/orbit', logo: '/assets/icons/orbit.png', iconOnly: true, tier: 'partner', blurb: 'Free, open-source screen recorder and video editor for macOS.' },
+    { name: 'Orbit', url: 'https://github.com/diip3sh/orbit', logo: '/assets/icons/orbit.png', iconOnly: true, tier: 'partner', blurb: 'Gravador de tela e editor de vídeo gratuito e open source para macOS.' },
     { name: 'RapidProxy', url: 'https://www.rapidproxy.io/?ref=openstock', logo: '/assets/icons/rapidproxy.png', banner: '/assets/images/rapidproxy-banner.png', tier: 'company' },
 ];
 
@@ -79,21 +79,21 @@ export const SUPPORTERS: { name: string; login: string }[] = [
 ];
 
 // Counted from GitHub Sponsors; individual sponsors stay anonymous unless they sponsor publicly.
-export const SPONSOR_GOAL = { label: 'monthly sponsors', target: 1000, current: 1 };
+export const SPONSOR_GOAL = { label: 'patrocinadores mensais', target: 1000, current: 1 };
 
 export const SPONSOR_CONTACT_EMAIL = 'opendevsociety@gmail.com';
 
 // Who receives sponsorships today (GitHub Sponsors is on the founder's personal account).
-export const SPONSOR_RECIPIENT = { name: 'Ravi Pratap Singh', handle: 'ravixalgorithm', role: 'founder of Open Dev Society' };
+export const SPONSOR_RECIPIENT = { name: 'Ravi Pratap Singh', handle: 'ravixalgorithm', role: 'fundador da Open Dev Society' };
 
 // Where sponsorship money goes. Add `monthly` (USD) to a line once the real bill is known;
 // the page then shows amounts and each line's share. Lines without it never show a figure.
 export const FUNDING_USES: { label: string; detail: string; monthly?: number }[] = [
-    { label: 'Hosting', detail: 'Vercel serves the app and site. Our traffic is past the free tier.' },
-    { label: 'Market data', detail: 'Finnhub keys, so quotes stay fast for everyone and OpenStock Cloud can go live.' },
-    { label: 'Database', detail: 'MongoDB Atlas for accounts, watchlists and alerts.' },
-    { label: 'AI and email', detail: 'Gemini for welcome emails and the weekly digest, plus email delivery.' },
-    { label: 'Maintenance', detail: 'Time to review community pull requests, fix bugs and ship features.' },
+    { label: 'Hospedagem', detail: 'A Vercel serve o app e o site. Nosso tráfego já passou do plano gratuito.' },
+    { label: 'Dados de mercado', detail: 'Chaves do Finnhub, para as cotações seguirem rápidas para todos e o OpenStock Cloud entrar no ar.' },
+    { label: 'Banco de dados', detail: 'MongoDB Atlas para contas, watchlists e alertas.' },
+    { label: 'IA e e-mail', detail: 'Gemini para os e-mails de boas-vindas e o resumo semanal, além do envio de e-mails.' },
+    { label: 'Manutenção', detail: 'Tempo para revisar pull requests da comunidade, corrigir bugs e lançar novidades.' },
 ];
 
 export const sidebarSponsors = () => ACTIVE_SPONSORS.filter((s) => s.tier === 'partner').slice(0, SIDEBAR_SPONSOR_SLOTS);

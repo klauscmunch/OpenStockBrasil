@@ -14,11 +14,11 @@ describe('NYSE session', () => {
     });
 
     it('counts down to the right open', () => {
-        expect(sessionOf(2, at(9)).line).toBe('Pre-market · opens in 30m');
-        expect(sessionOf(2, at(14)).line).toBe('Market open · closes in 2h 00m');
+        expect(sessionOf(2, at(9)).line).toBe('Pré-mercado · abre em 30m');
+        expect(sessionOf(2, at(14)).line).toBe('Mercado aberto · fecha em 2h 00m');
         // Friday night and Saturday wait for Monday 9:30
-        expect(sessionOf(5, at(21)).line).toBe('Market closed · opens in 2d 12h');
-        expect(sessionOf(6, at(12)).line).toBe('Market closed · opens in 1d 21h');
+        expect(sessionOf(5, at(21)).line).toBe('Mercado fechado · abre em 2d 12h');
+        expect(sessionOf(6, at(12)).line).toBe('Mercado fechado · abre em 1d 21h');
     });
 
     it('formats spans', () => {

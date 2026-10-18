@@ -21,7 +21,7 @@ export async function addToWatchlist(symbol: string, company: string) {
         await connectToDatabase();
 
         if (!(await Watchlist.exists({ userId, symbol: ticker })) && (await Watchlist.countDocuments({ userId })) >= MAX_WATCHLIST) {
-            return { error: `Your watchlist is full (${MAX_WATCHLIST} stocks). Remove one to add another.` };
+            return { error: `Sua watchlist está cheia (${MAX_WATCHLIST} ações). Remova uma para adicionar outra.` };
         }
 
         // Upsert to avoid duplicates/errors if it already exists

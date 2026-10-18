@@ -19,15 +19,15 @@ export const isWeekday = (d: number) => d >= 1 && d <= 5;
 export function sessionOf(weekday: number, minutes: number): { phase: Phase; line: string } {
     const until = (target: number) => formatSpan(target - minutes);
     if (isWeekday(weekday)) {
-        if (minutes >= OPEN && minutes < CLOSE) return { phase: 'open', line: `Market open · closes in ${until(CLOSE)}` };
-        if (minutes >= PRE && minutes < OPEN) return { phase: 'pre', line: `Pre-market · opens in ${until(OPEN)}` };
-        if (minutes >= CLOSE && minutes < AFTER_END) return { phase: 'after', line: `After hours · ends in ${until(AFTER_END)}` };
-        if (minutes < PRE) return { phase: 'closed', line: `Market closed · opens in ${until(OPEN)}` };
+        if (minutes >= OPEN && minutes < CLOSE) return { phase: 'open', line: `Mercado aberto · fecha em ${until(CLOSE)}` };
+        if (minutes >= PRE && minutes < OPEN) return { phase: 'pre', line: `Pré-mercado · abre em ${until(OPEN)}` };
+        if (minutes >= CLOSE && minutes < AFTER_END) return { phase: 'after', line: `After-market · termina em ${until(AFTER_END)}` };
+        if (minutes < PRE) return { phase: 'closed', line: `Mercado fechado · abre em ${until(OPEN)}` };
     }
     // Next weekday open, counting whole days from today
     let days = 1;
     while (!isWeekday((weekday + days) % 7)) days++;
-    return { phase: 'closed', line: `Market closed · opens in ${formatSpan(days * DAY + OPEN - minutes)}` };
+    return { phase: 'closed', line: `Mercado fechado · abre em ${formatSpan(days * DAY + OPEN - minutes)}` };
 }
 
 export function formatSpan(totalMinutes: number) {

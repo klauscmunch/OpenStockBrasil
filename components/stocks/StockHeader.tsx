@@ -5,7 +5,7 @@ import StockLivePrice from "@/components/stocks/StockLivePrice";
 import { isStockInWatchlist } from "@/lib/actions/watchlist.actions";
 import { getCompanyProfile, getLiveQuotes } from "@/lib/actions/finnhub.actions";
 import { formatNumber, formatPrice, formatSymbolForTradingView } from "@/lib/utils";
-import { hasFinnhubQuotes } from "@/lib/markets";
+import { hasFinnhubQuotes, hasLiveQuotes } from "@/lib/markets";
 import { symbolInfoConfig } from "@/lib/constants";
 import TradingViewWidget from "@/components/TradingViewWidget";
 
@@ -18,12 +18,12 @@ async function TradingViewHeader({ symbol }: { symbol: string }) {
             <div className="card flex flex-wrap items-center justify-between gap-4 p-4">
                 <div className="min-w-0">
                     <h1 className="mono truncate text-xl font-bold tracking-[-0.02em]">{symbol}</h1>
-                    <p className="text-[12.5px] text-faint">{tvSymbol.split(':')[0]} · quote via TradingView</p>
+                    <p className="text-[12.5px] text-faint">{tvSymbol.split(':')[0]} · cotação via TradingView</p>
                 </div>
                 <div className="flex items-center gap-2">
                     <WatchlistButton symbol={symbol} company={symbol} isInWatchlist={isInWatchlist} />
-                    <span className="pill h-9 px-3" title="Price alerts need a quote source we can check every 5 minutes">
-                        <Bell /> Alerts: US stocks and crypto
+                    <span className="pill h-9 px-3" title="Alertas de preço precisam de uma fonte de cotação que possamos consultar a cada 5 minutos">
+                        <Bell /> Alertas: só ações dos EUA e cripto
                     </span>
                 </div>
             </div>
@@ -35,7 +35,9 @@ async function TradingViewHeader({ symbol }: { symbol: string }) {
 }
 
 export default async function StockHeader({ symbol }: { symbol: string }) {
-    if (!hasFinnhubQuotes(symbol)) return <TradingViewHeader symbol={symbol} />;
+    if (!hasLiveQuotes(symbol)) return <TradingViewHeader symbol={symbol} />;
+    // B3 is priced by brapi.dev, but alerts are checked against Finnhub only
+    const alertable = hasFinnhubQuotes(symbol);
 
     const [isInWatchlist, quotes, profile] = await Promise.all([
         isStockInWatchlist(symbol),
@@ -49,10 +51,10 @@ export default async function StockHeader({ symbol }: { symbol: string }) {
     const money = (value?: number) => (value ? formatPrice(value, currency) : '—');
 
     const stats = [
-        { label: 'Open', icon: CalendarClock, value: money(quote?.o), hint: 'First trade of the session' },
-        { label: 'Day range', icon: MoveVertical, value: quote?.l && quote?.h ? `${money(quote.l)} – ${money(quote.h)}` : '—', hint: 'Low to high' },
-        { label: 'Prev close', icon: Gauge, value: money(quote?.pc), hint: 'Last session' },
-        { label: 'Market cap', icon: Landmark, value: profile?.marketCapitalization ? formatNumber(profile.marketCapitalization) : '—', hint: currency },
+        { label: 'Abertura', icon: CalendarClock, value: money(quote?.o), hint: 'Primeiro negócio do pregão' },
+        { label: 'Variação do dia', icon: MoveVertical, value: quote?.l && quote?.h ? `${money(quote.l)} – ${money(quote.h)}` : '—', hint: 'Mínima a máxima' },
+        { label: 'Fechamento anterior', icon: Gauge, value: money(quote?.pc), hint: 'Último pregão' },
+        { label: 'Valor de mercado', icon: Landmark, value: profile?.marketCapitalization ? formatNumber(profile.marketCapitalization) : '—', hint: currency },
     ];
 
     return (
@@ -76,9 +78,15 @@ export default async function StockHeader({ symbol }: { symbol: string }) {
 
                 <div className="flex items-center gap-2">
                     <WatchlistButton symbol={symbol} company={company} isInWatchlist={isInWatchlist} />
-                    <CreateAlertModal symbol={symbol} currentPrice={quote?.c} currency={currency}>
-                        <button type="button" className="btn btn-primary"><Bell /> Set alert</button>
-                    </CreateAlertModal>
+                    {alertable ? (
+                        <CreateAlertModal symbol={symbol} currentPrice={quote?.c} currency={currency}>
+                            <button type="button" className="btn btn-primary"><Bell /> Criar alerta</button>
+                        </CreateAlertModal>
+                    ) : (
+                        <span className="pill h-9 px-3" title="Alertas de preço precisam de uma fonte de cotação que possamos consultar a cada 5 minutos">
+                            <Bell /> Alertas: só ações dos EUA e cripto
+                        </span>
+                    )}
                 </div>
             </div>
 

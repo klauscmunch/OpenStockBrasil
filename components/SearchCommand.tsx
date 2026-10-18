@@ -75,20 +75,20 @@ export default function SearchCommand({ initialStocks }: { initialStocks: StockW
     return (
         <CommandDialog open={open} onOpenChange={setOpen} className="search-dialog">
             <div className="search-field">
-                <CommandInput value={searchTerm} onValueChange={setSearchTerm} placeholder="Search by company or symbol" className="search-input" />
+                <CommandInput value={searchTerm} onValueChange={setSearchTerm} placeholder="Busque por empresa ou ticker" className="search-input" />
                 {loading && <Loader2 className="search-loader" />}
             </div>
             <CommandList className="search-list">
                 {loading ? (
-                    <CommandEmpty className="search-list-empty">Searching</CommandEmpty>
+                    <CommandEmpty className="search-list-empty">Buscando</CommandEmpty>
                 ) : displayStocks?.length === 0 ? (
                     <div className="search-list-indicator">
-                        {isSearchMode ? `Nothing matches “${searchTerm.trim()}”` : 'No stocks available'}
+                        {isSearchMode ? `Nada encontrado para “${searchTerm.trim()}”` : 'Nenhuma ação disponível'}
                     </div>
                 ) : (
                     <ul>
                         <li className="search-count">
-                            {isSearchMode ? 'Results' : 'Popular'}
+                            {isSearchMode ? 'Resultados' : 'Populares'}
                             <span className="num"> · {displayStocks?.length || 0}</span>
                         </li>
                         {displayStocks?.map((stock) => (
